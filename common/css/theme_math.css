@@ -1,0 +1,23 @@
+/* Math look & feel (change freely without touching base.css) */
+:root{
+    --accent: #2d6cdf;
+    --soft: #f3f7ff;
+  }
+  
+  .hero{
+    background: linear-gradient(180deg, var(--soft), #fff);
+  }
+  
+  h1, h2, h3{
+    letter-spacing: -0.02em;
+  }
+  
+  .card h2{
+    margin: 0 0 6px;
+  }
+  
+  .card p{
+    margin: 0;
+    color: rgba(15, 23, 42, 0.72);
+  }
+  

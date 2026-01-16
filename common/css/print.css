@@ -1,0 +1,6 @@
+@media print {
+    .topbar, .sidebar, .footer { display: none !important; }
+    .page { max-width: none; padding: 0; }
+    .card, .hero { box-shadow: none; }
+  }
+  

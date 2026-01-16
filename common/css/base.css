@@ -1,0 +1,203 @@
+/* Math base layout system (independent from Code) */
+
+:root{
+    --bg: #ffffff;
+    --ink: #0f172a;
+    --muted: rgba(15, 23, 42, 0.72);
+    --border: rgba(15, 23, 42, 0.12);
+    --card: #ffffff;
+    --radius: 16px;
+    --shadow: 0 8px 22px rgba(0,0,0,0.06);
+  }
+  
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  
+  a{ color: inherit; }
+  
+  .page{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+  
+  .layout{
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 16px;
+  }
+  
+  @media (max-width: 900px){
+    .layout{ grid-template-columns: 1fr; }
+    .sidebar{ order: 2; }
+  }
+  
+  .topbar{
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+  }
+  
+  .nav-shell{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  
+  .nav-brand a{
+    text-decoration: none;
+    font-weight: 700;
+  }
+  
+  .nav-links{
+    display: flex;
+    gap: 12px;
+  }
+  .nav-links a{
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+  }
+  .nav-links a:hover{
+    border-color: var(--border);
+  }
+  
+  .sidebar{
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+  .sidebar-title{
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+  }
+  .side-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .side-link{
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    color: var(--muted);
+  }
+  .side-link:hover{ border-color: var(--border); color: var(--ink); }
+  a.active{ border-color: var(--border); color: var(--ink); }
+  
+  .hero{
+    padding: 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+  .lede{ color: var(--muted); max-width: 70ch; }
+  
+  .grid{
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+  
+  .card{
+    display: block;
+    padding: 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--card);
+    text-decoration: none;
+    box-shadow: var(--shadow);
+  }
+  .card:hover{ transform: translateY(-1px); }
+  
+  .footer{
+    margin-top: 22px;
+    padding: 16px 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+  }
+  
+  .side-divider{
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 12px 0;
+  }
+  
+  .units-title{
+    font-weight: 700;
+    margin: 0 0 8px;
+    opacity: 0.85;
+  }
+  
+  .units-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .unit-link{
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    color: rgba(15,23,42,0.75);
+  }
+  
+  .unit-link:hover{
+    border-color: var(--border);
+    color: var(--ink);
+  }
+  
+  /* ===== Sticky Top Header (Math + Code style) ===== */
+/* ===== Sticky, full-width header aligned with page grid ===== */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Constrain whatever nav_systems.js renders so it aligns with .page */
+  .site-header [data-top-nav]{
+    max-width: 1100px;     /* same as .page */
+    margin: 0 auto;
+    padding: 14px 18px;    /* match your .page padding feel */
+  }
+
+/* ===== Page Title Header (matches CODE vibes) ===== */
+.page-header{
+  margin: 0;
+  padding: 18px 0 8px 0;
+    }
+
+    .page-header h1{
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+
+    .page-header .lede{
+      margin: 8px 0 0 0;
+      opacity: .85;
+      max-width: 70ch;
+    }
+
+main.page{
+  padding-top: 0; /* usually fine */
+}
