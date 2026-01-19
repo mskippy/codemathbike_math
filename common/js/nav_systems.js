@@ -48,6 +48,11 @@ window.initNavSystems = function initNavSystems() {
       ${buildLinks(data.unitLinks, "unit-link")}
     `;
   }
+  
+  // Header title + unit subtitle
+  const { course, unit, page } = document.body.dataset;
+  renderHeaderTitleAndUnit(course, unit, page);
+
 
   setActiveLinks(document);
 };
@@ -55,7 +60,7 @@ function renderHeaderTitleAndUnit(courseKey, unitKey, pageKey) {
   const course = window.NAV_DATA?.[courseKey];
   if (!course) return;
 
-  const titleEl = document.getElementById("site-title");
+  const titleEl = document.getElementById("page-title");
   const unitEl = document.querySelector(".breadcrumbs"); // we’re using this as a subtitle line
 
   // Pick the best page title

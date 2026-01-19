@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Math 8 | Lesson</title>
+
+  <!-- Same CSS as m8_index.html -->
+<link rel="stylesheet" href="/common/css/base.css" />
+<link rel="stylesheet" href="/common/css/sidebar_math.css" />
+
+<!-- Load scripts ONCE, in this order -->
+<script src="/common/js/nav_data.js" defer></script>
+<script src="/common/js/utils.js" defer></script>
+
+<!-- ✅ This is REQUIRED for <header data-partial="..."> to load -->
+<script src="/common/js/inject_partials.js" defer></script>
+
+<script src="/common/js/nav_systems.js" defer></script>
+<script src="/common/js/sidebar_math.js" defer></script>
+<script src="/common/js/main.js" defer></script>
+
+</head>
+
+<!--
+LESSON PAGE TAGS
+- data-course="math8"
+- data-unit="unit1"
+- data-page="lesson1"
+-->
+<body data-course="math8" data-unit="unit1" data-page="lesson1">
+
+  <!-- Shared header partial (same CODE pattern, if you're using inject_partials.js) -->
+  <header id="site-header" data-partial="/common/partials/header.html"></header>
+  
+
+  <!-- ✅ Match m8_index.html layout -->
+  <main class="page layout">
+
+    <!-- ✅ Left sidebar (match m8_index.html) -->
+    <aside class="sidebar">
+      <div data-math-sidebar></div>
+    </aside>
+
+    <!-- ✅ Main content area -->
+    <section class="content">
+
+      <section class="hero">
+        <!-- NOTE: Your header system should be the only H1 on the page.
+             If you want a visible title in-content, use H2. -->
+        <h2>Lesson Title</h2>
+        <p class="lede">What are we learning today?</p>
+      </section>
+
+      <section class="card" style="margin-top:14px;">
+        <h2>Success Criteria</h2>
+        <ul>
+          <li>I can …</li>
+          <li>I can …</li>
+        </ul>
+      </section>
+
+      <section class="card" style="margin-top:14px;">
+        <h2>Warm-Up</h2>
+        <ol>
+          <li>…</li>
+          <li>…</li>
+        </ol>
+      </section>
+
+      <section class="card" style="margin-top:14px;">
+        <h2>Mini Lesson</h2>
+        <details>
+          <summary>Example (click to expand)</summary>
+          <p><strong>Example:</strong> …</p>
+          <p><strong>Solution:</strong> …</p>
+        </details>
+      </section>
+
+      <section class="card" style="margin-top:14px;">
+        <h2>Practice (Green / Blue / Black)</h2>
+
+        <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+          <div class="card">
+            <h3>Green</h3>
+            <ul>
+              <li>Task 1</li>
+              <li>Task 2</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Blue</h3>
+            <ul>
+              <li>Task 1</li>
+              <li>Task 2</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Black</h3>
+            <ul>
+              <li>Task 1</li>
+              <li>Task 2</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:14px;">
+        <h2>Exit Check</h2>
+        <ol>
+          <li>…</li>
+          <li>…</li>
+        </ol>
+      </section>
+
+    </section>
+  </main>
+
+
+</body>
+</html>

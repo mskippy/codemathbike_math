@@ -19,6 +19,20 @@
   }
   
   a{ color: inherit; }
+
+  /* Header nav links (Home | Math 8) */
+  .header-nav a{
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Header nav hover highlight */
+  .header-nav a:hover,
+  .header-nav a:focus-visible{
+    color: #7b3fe4;
+  }
+
+
   
   .page{
     max-width: 1100px;
@@ -37,10 +51,12 @@
     .sidebar{ order: 2; }
   }
   
+  /* Right-align header top navigation (Home | Math 8) */
   .topbar{
-    border-bottom: 1px solid var(--border);
-    background: #fff;
+    display: flex;
+    justify-content: flex-end;
   }
+
   
   .nav-shell{
     max-width: 1100px;
@@ -94,9 +110,15 @@
     border: 1px solid transparent;
     color: var(--muted);
   }
-  .side-link:hover{ border-color: var(--border); color: var(--ink); }
-  a.active{ border-color: var(--border); color: var(--ink); }
-  
+  .side-link:hover{ 
+    border-color: var(--border); 
+    color: var(--ink); 
+  }
+  a.active{ 
+    border-color: var(--border); 
+    color: var(--ink); 
+  }
+
   .hero{
     padding: 18px;
     border-radius: var(--radius);
@@ -163,48 +185,54 @@
   }
   
   /* ===== Sticky Top Header (Math + Code style) ===== */
-/* ===== Sticky, full-width header aligned with page grid ===== */
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-
-/* Constrain whatever nav_systems.js renders so it aligns with .page */
-  .site-header [data-top-nav]{
-    max-width: 1100px;     /* same as .page */
-    margin: 0 auto;
-    padding: 14px 18px;    /* match your .page padding feel */
+  /* ===== Sticky, full-width header aligned with page grid ===== */
+  .site-header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
   }
 
-/* ===== Page Title Header (matches CODE vibes) ===== */
-.page-header{
-  margin: 0;
-  padding: 18px 0 8px 0;
+  /* Constrain whatever nav_systems.js renders so it aligns with .page */
+    .site-header [data-top-nav]{
+      max-width: 1100px;     /* same as .page */
+      margin: 0 auto;
+      padding: 14px 18px;    /* match your .page padding feel */
     }
 
-    .page-header h1{
-      margin: 0;
-      font-size: 2rem;
-      line-height: 1.15;
+  /* ===== Page Title Header (matches CODE vibes) ===== */
+  .page-header{
+    margin: 0;
+    padding: 18px 0 8px 0;
+      }
+
+      /* Slight spacing refinement between title and breadcrumbs */
+    .page-header .breadcrumbs{
+      margin-top: 4px;
     }
 
-    .page-header .lede{
-      margin: 8px 0 0 0;
-      opacity: .85;
-      max-width: 70ch;
-    }
 
-main.page{
-  padding-top: 0; /* usually fine */
-}
+      .page-header h1{
+        margin: 0;
+        font-size: 2rem;
+        line-height: 1.15;
+      }
 
-.breadcrumbs {
-  margin-top: 0.25rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
+      .page-header .lede{
+        margin: 8px 0 0 0;
+        opacity: .85;
+        max-width: 70ch;
+      }
+
+  main.page{
+    padding-top: 0; /* usually fine */
+  }
+
+  .breadcrumbs {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
 
