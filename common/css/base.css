@@ -201,3 +201,10 @@
 main.page{
   padding-top: 0; /* usually fine */
 }
+
+.breadcrumbs {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+

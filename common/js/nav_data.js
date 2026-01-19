@@ -12,11 +12,10 @@ window.NAV_META = {
 
   // Top nav (header) — match the CODE approach; styling handled in CSS
   topLinks: [
-    { label: "Home", href: "/" },
-    { label: "Math", href: "/math/" },
-    { label: "Math 8", href: "/math/math8/m8_index.html" },
-    { label: "Math 9", href: "/math/math9/m9_index.html" },       // create later
-    { label: "FMPC 10", href: "/math/fmpc10/fmpc10_index.html" }, // create later
+        { label: "Math", href: "/" },
+    { label: "Math 8", href: "/math8/m8_index.html" },
+    { label: "Math 9", href: "/math9/m9_index.html" },       // create later
+    { label: "FMPC 10", href: "/fmpc10/fmpc10_index.html" }, // create later
   ],
 };
 
@@ -25,65 +24,74 @@ window.NAV_DATA = {
   // MATH 8
   // --------------------------------------------------------------------------
   math8: {
-    title: "Math 8",
-    href: "/math/math8/m8_index.html",
+  title: "Math 8",
+  href: " /math8/m8_index.html",
 
-    // Optional but recommended for consistent ordering
-    unitOrder: ["unit1", "unit2", "unit3", "unit4", "unit5"],
+  unitOrder: ["unit1", "unit2", "unit3", "unit4", "unit5"],
 
-    units: {
-      unit1: {
-        title: "U1",
-        href: "/math/math8/unit1/u1_index.html",
-        pageOrder: ["page1", "page2", "page3"],
-        pages: {
-          page1: { title: "1.1 Lesson Title", href: "/math/math8/unit1/1.1_index.html" },
-          page2: { title: "1.2 Lesson Title", href: "/math/math8/unit1/1.2_index.html" },
-          page3: { title: "1.3 Lesson Title", href: "/math/math8/unit1/1.3_index.html" },
+  units: {
+    unit1: {
+      title: "Unit 1: Financial Foundations",
+      href: "/math8/unit1/u1_index.html",
+      pageOrder: ["lesson1", "lesson2", "lesson3"],
+      pages: {
+        lesson1: {
+          title: "1.1 Introduction to Financial Literacy",
+          href: "/math8/unit1/lesson1/1.1_index.html"
         },
-      },
-
-      unit2: {
-        title: "U2",
-        href: "/math/math8/unit2/u2_index.html",
-        pageOrder: ["page1", "page2"],
-        pages: {
-          page1: { title: "2.1 Lesson Title", href: "/math/math8/unit2/2.1_index.html" },
-          page2: { title: "2.2 Lesson Title", href: "/math/math8/unit2/2.2_index.html" },
+        lesson2: {
+          title: "1.2 Integers & Number Sense",
+          href: "/math8/unit1/lesson2/1.2_index.html"
         },
-      },
-
-      unit3: {
-        title: "U3",
-        href: "/math/math8/unit3/u3_index.html",
-        pageOrder: ["page1", "page2", "page3"],
-        pages: {
-          page1: { title: "3.1 Lesson Title", href: "/math/math8/unit3/3.1_index.html" },
-          page2: { title: "3.2 Lesson Title", href: "/math/math8/unit3/3.2_index.html" },
-          page3: { title: "3.3 Lesson Title", href: "/math/math8/unit3/3.3_index.html" },
-        },
-      },
-
-      unit4: {
-        title: "U4",
-        href: "/math/math8/unit4/u4_index.html",
-        pages: {}, // fill later
-      },
-
-      unit5: {
-        title: "U5",
-        href: "/math/math8/unit5/u5_index.html",
-        pages: {}, // fill later
-      },
+        lesson3: {
+          title: "1.3 Multi-Step Money Problems",
+          href: "/math8/unit1/lesson3/1.3_index.html"
+        }
+      }
     },
-  },
+
+    unit2: {
+      title: "Unit 2: Ratios & Rates",
+      href: "/math8/unit2/u2_index.html",
+      pageOrder: ["lesson1", "lesson2"],
+      pages: {
+        lesson1: {
+          title: "2.1 Ratios in Context",
+          href: "/math8/unit2/lesson1/2.1_index.html"
+        },
+        lesson2: {
+          title: "2.2 Unit Pricing & Best Deals",
+          href: "/math8/unit2/lesson2/2.2_index.html"
+        }
+      }
+    },
+
+    unit3: {
+      title: "Unit 3: Percent in Real Life",
+      href: "/math8/unit3/u3_index.html",
+      pages: {}
+    },
+
+    unit4: {
+      title: "Unit 4: Algebra as a Tool",
+      href: "/math8/unit4/u4_index.html",
+      pages: {}
+    },
+
+    unit5: {
+      title: "Unit 5: Measurement, Geometry & Data",
+      href: "/math8/unit5/u5_index.html",
+      pages: {}
+    }
+  }
+},
 
   // --------------------------------------------------------------------------
   // MATH 9 (stub now; fill when you build it)
   // --------------------------------------------------------------------------
   math9: {
     title: "Math 9",
-    href: "/math/math9/m9_index.html",
+    href: "/math9/m9_index.html",
     units: {},
   },
 
@@ -92,7 +100,7 @@ window.NAV_DATA = {
   // --------------------------------------------------------------------------
   fmpc10: {
     title: "FMPC 10",
-    href: "/math/fmpc10/fmpc10_index.html",
+    href: "/fmpc10/fmpc10_index.html",
     units: {},
   },
 };

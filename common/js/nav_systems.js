@@ -51,3 +51,32 @@ window.initNavSystems = function initNavSystems() {
 
   setActiveLinks(document);
 };
+function renderHeaderTitleAndUnit(courseKey, unitKey, pageKey) {
+  const course = window.NAV_DATA?.[courseKey];
+  if (!course) return;
+
+  const titleEl = document.getElementById("site-title");
+  const unitEl = document.querySelector(".breadcrumbs"); // we’re using this as a subtitle line
+
+  // Pick the best page title
+  let pageTitle = course.title;
+
+  if (unitKey && course.units?.[unitKey]) {
+    pageTitle = course.units[unitKey].title;
+  }
+  if (unitKey && pageKey && course.units?.[unitKey]?.pages?.[pageKey]) {
+    pageTitle = course.units[unitKey].pages[pageKey].title;
+  }
+
+  if (titleEl) titleEl.textContent = pageTitle;
+
+  // Subtitle line: unit title only (or blank on landing)
+  if (unitEl) {
+    if (unitKey && course.units?.[unitKey]) {
+      unitEl.textContent = course.units[unitKey].title;
+    } else {
+      unitEl.textContent = ""; // landing page: no subtitle
+    }
+  }
+}
+
