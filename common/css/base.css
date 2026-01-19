@@ -205,7 +205,7 @@
   /* ===== Page Title Header (matches CODE vibes) ===== */
   .page-header{
     margin: 0;
-    padding: 18px 0 8px 0;
+    padding: 18px 24px 8px 24px;
       }
 
       /* Slight spacing refinement between title and breadcrumbs */
@@ -227,7 +227,7 @@
       }
 
   main.page{
-    padding-top: 0; /* usually fine */
+    padding-top: 24px; /* usually fine */
   }
 
   .breadcrumbs {
