@@ -31,7 +31,7 @@ window.NAV_DATA = {
 
   units: {
     unit1: {
-      title: "Unit 1: Financial Foundations",
+      title: "U1: Financial Foundations",
       href: "/math8/unit1/u1_index.html",
       pageOrder: ["lesson1", "lesson2", "lesson3"],
       pages: {

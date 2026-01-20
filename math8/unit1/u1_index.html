@@ -3,38 +3,240 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Math 8 • Unit 1 | CodeMathBike</title>
+  <title>Math 8 | Unit 1: Financial Foundations</title>
 
+  <!-- Same CSS stack as your working Math pages -->
   <link rel="stylesheet" href="/common/css/base.css" />
-  <link rel="stylesheet" href="/common/css/theme_math.css" />
+  <link rel="stylesheet" href="/common/css/sidebar_math.css" />
+
+  <!-- Same script stack as your working Math pages -->
+  <script src="/common/js/nav_data.js" defer></script>
+  <script src="/common/js/utils.js" defer></script>
+  <script src="/common/js/inject_partials.js" defer></script>
+  <script src="/common/js/nav_systems.js" defer></script>
+  <script src="/common/js/sidebar_math.js" defer></script>
+  <script src="/common/js/main.js" defer></script>
 </head>
-<body>
 
-  <header data-partial="/common/partials/header.html"></header>
+<!--
+UNIT PAGE TAGS
+- data-course must match NAV_DATA key (math8)
+- data-unit must match units key (unit1, unit2, ...)
+-->
+<body data-course="math8" data-unit="unit1">
 
+  <!-- Shared header partial -->
+  <header id="site-header" data-partial="/common/partials/header.html"></header>
+
+  <!-- Matches m8_index.html layout -->
   <main class="page layout">
-    <div data-partial="/common/partials/sidebar.html"></div>
 
-    <section>
+    <!-- Left sidebar -->
+    <aside class="sidebar" aria-label="Course navigation">
+      <div data-math-sidebar></div>
+    </aside>
+
+    <!-- Main content -->
+    <section id="content" class="content">
+
+      <!-- Unit overview -->
       <section class="hero">
-        <h1>U1: Financial Foundations</h1>
-        <p class="lede">Number fluency using real money contexts: totals, change, estimation, and integer thinking.</p>
+        <h2>Unit Overview</h2>
+        <p class="lede">
+          This unit launches Math 8 with real-world money contexts while strengthening integer fluency and number sense.
+          You’ll review integer operations, order of operations, and estimation strategies—then use them to model balances,
+          deposits/withdrawals, and refunds. A key focus is checking for reasonableness and explaining your thinking.
+        </p>
       </section>
 
-      <section class="grid">
-        <a class="card" href="/math8/unit1/lesson1/1_1_index.html">
-          <h2>1.1</h2>
-          <p>Starter routines + number sense warm-up.</p>
-        </a>
+      <!-- What you'll learn -->
+      <section class="card" style="margin-top:14px;">
+        <h2>What You’ll Learn</h2>
+
+        <h3 style="margin-top:10px;">Core math skills</h3>
+        <ul>
+          <li>Add, subtract, multiply, and divide integers</li>
+          <li>Apply the correct order of operations in multi-step problems</li>
+          <li>Estimate and round values to support mental math</li>
+          <li>Use reasonableness checks to identify and fix errors</li>
+        </ul>
+
+        <h3 style="margin-top:10px;">Money contexts we’ll use</h3>
+        <ul>
+          <li>Balances (positive and negative values)</li>
+          <li>Deposits and withdrawals</li>
+          <li>Refunds and corrections</li>
+          <li>Number sense routines: “Does this total make sense?”</li>
+        </ul>
       </section>
+
+      <!-- BC alignment -->
+      <section class="card" style="margin-top:14px;">
+        <h2>BC Math 8 Alignment</h2>
+
+        <h3 style="margin-top:10px;">Big Ideas (Unit connections)</h3>
+        <ul>
+          <li>Number concepts can be represented and applied in flexible ways to solve problems.</li>
+          <li>Computational fluency supports problem solving and reasoning.</li>
+          <li>Estimation and reasonableness checks help determine whether results make sense in context.</li>
+        </ul>
+
+        <h3 style="margin-top:10px;">Curricular content in this unit</h3>
+        <ul>
+          <li>Operations with integers (addition, subtraction, multiplication, division)</li>
+          <li>Order of operations</li>
+          <li>Estimation, rounding, and checking for reasonableness</li>
+          <li>Applying number concepts in financial contexts</li>
+        </ul>
+
+        <h3 style="margin-top:10px;">Curricular competencies emphasized</h3>
+        <ul>
+          <li>Reasoning and analyzing</li>
+          <li>Communicating mathematical thinking</li>
+          <li>Connecting math to real-life situations</li>
+          <li>Applying multiple strategies to solve problems</li>
+        </ul>
+      </section>
+
+      <!-- Lessons table -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Lessons in This Unit</h2>
+        
+      
+        <div style="overflow-x:auto; margin-top:10px;">
+          <table class="lessons-table">
+            <thead>
+              <tr>
+                <th>Lesson</th>
+                <th style="width:160px;">Date</th>
+              </tr>
+            </thead>
+      
+            <tbody>
+              <tr>
+                <td>
+                  <a href="/math8/unit1/lesson1/1.1_index.html"><strong>1.1 Integer Review</strong></a>
+                </td>
+                <td></td>
+              </tr>
+      
+              <tr>
+                <td>
+                  <a href="/math8/unit1/lesson2/1.2_index.html"><strong>1.2 Adding &amp; Subtracting Integers</strong></a>
+                </td>
+                <td></td>
+              </tr>
+      
+              <tr>
+                <td>
+                  <a href="/math8/unit1/lesson3/1.3_index.html"><strong>1.3 Multiplying &amp; Dividing Integers</strong></a>
+                </td>
+                <td></td>
+              </tr>
+      
+              <tr>
+                <td>
+                  <a href="/math8/unit1/lesson4/1.4_index.html"><strong>1.4 Order of Operations (Money Contexts)</strong></a>
+                </td>
+                <td></td>
+              </tr>
+      
+              <tr>
+                <td>
+                  <a href="/math8/unit1/lesson5/1.5_index.html"><strong>1.5 Estimation, Rounding &amp; Reasonableness Checks</strong></a>
+                </td>
+                <td></td>
+              </tr>
+      
+              <tr>
+                <td>
+                  <a href="/math8/unit1/task/1.6_index.html"><strong>1.6 Unit Task: Bank Account Simulator</strong></a>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+
+
+      <!-- Performance Task -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Performance Task</h2>
+        <h3 style="margin-top:10px;">Bank Account Simulator + Receipt Error-Checking</h3>
+        <p>
+          You’ll track a “bank account” over time using transactions (deposits, withdrawals, refunds), then analyze
+          receipts to find and fix calculation errors. Estimation and reasonableness checks are a key part of the task,
+          along with clearly explaining your thinking.
+        </p>
+      </section>
+
+      <!-- Success looks like -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Success in this unit looks like…</h2>
+        <ul>
+          <li>I can model financial situations using positive and negative integers.</li>
+          <li>I can accurately perform integer operations in multi-step problems.</li>
+          <li>I can use estimation and rounding to check my work.</li>
+          <li>I can explain why an answer makes sense (or doesn’t) in context.</li>
+        </ul>
+      </section>
+
     </section>
+
+    <!-- Right sidebar -->
+    <aside class="right-rail">
+        <!-- Key vocabulary -->
+        <section class="card">
+          <h3>Key Vocabulary</h3>
+          <p class="lede">Click each term for a definition and example.</p>
+  
+          <details>
+            <summary><strong>Integer</strong></summary>
+            <p>A whole number that can be positive, negative, or zero (e.g., −3, 0, 5).</p>
+          </details>
+  
+          <details>
+            <summary><strong>Balance</strong></summary>
+            <p>The amount of money in an account after deposits and withdrawals are applied.</p>
+          </details>
+  
+          <details>
+            <summary><strong>Deposit</strong></summary>
+            <p>Money added to an account (usually increases the balance).</p>
+          </details>
+  
+          <details>
+            <summary><strong>Withdrawal</strong></summary>
+            <p>Money taken out of an account (usually decreases the balance).</p>
+          </details>
+  
+          <details>
+            <summary><strong>Refund</strong></summary>
+            <p>Money returned after an error or overpayment (adds back to the balance).</p>
+          </details>
+  
+          <details>
+            <summary><strong>Order of operations (BEDMAS)</strong></summary>
+            <p>The agreed rules for evaluating expressions: Brackets, Exponents, Division/Multiplication, Addition/Subtraction.</p>
+          </details>
+  
+          <details>
+            <summary><strong>Estimate</strong></summary>
+            <p>A close, reasonable value used to predict or check an answer (often by rounding).</p>
+          </details>
+  
+          <details>
+            <summary><strong>Reasonableness</strong></summary>
+            <p>Checking whether a result is logical and appropriate for the situation. If it seems off, you re-check your steps.</p>
+          </details>
+        </section>
+    </aside>
   </main>
 
-  <footer data-partial="/common/partials/footer.html"></footer>
+  <!-- Shared footer (optional if you’re using it everywhere) -->
+  <footer id="site-footer" data-partial="/common/partials/footer.html"></footer>
 
-  <script src="/common/js/nav_data.js"></script>
-  <script src="/common/js/nav_systems.js"></script>
-  <script src="/common/js/inject_partials.js"></script>
-  <script src="/common/js/main.js"></script>
 </body>
 </html>

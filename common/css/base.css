@@ -42,13 +42,17 @@
   
   .layout{
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 200px 1fr 220px;
     gap: 16px;
+    align-items: start;
   }
+  
+  
   
   @media (max-width: 900px){
     .layout{ grid-template-columns: 1fr; }
     .sidebar{ order: 2; }
+    .right-rail{ display: none; }
   }
   
   /* Right-align header top navigation (Home | Math 8) */
@@ -237,3 +241,51 @@
   color: var(--text-muted);
   }
 
+  /* Unit lessons table styling */
+  .lessons-table{
+    width:100%;
+    border-collapse:collapse;
+  }
+
+  /* Horizontal lines only */
+  .lessons-table th,
+  .lessons-table td{
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    border-bottom:1px solid rgba(0,0,0,0.12);
+    padding:10px 12px;
+    vertical-align:top;
+  }
+
+  /* Header */
+  .lessons-table thead th{
+    text-align:left;
+    font-weight:700;
+  }
+
+  /* Zebra shading */
+  .lessons-table tbody tr:nth-child(even){
+    background: rgba(0,0,0,0.04);
+  }
+
+  /* Make the lesson link look clean */
+  .lessons-table a{
+    text-decoration:none;
+  }
+  .lessons-table a:hover{
+    text-decoration:underline;
+  }
+
+  /* Right rail layout */
+.right-rail{
+  width:280px;
+  padding:0 0 0 14px;
+}
+
+/* Stack nicely on smaller screens */
+@media (max-width: 1100px){
+  .right-rail{
+    display:none;
+  }
+}
