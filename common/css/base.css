@@ -55,6 +55,8 @@
   .topbar{
     display: flex;
     justify-content: flex-end;
+    padding-right: 24px;
+    padding-top: 16px;
   }
 
   
@@ -208,31 +210,30 @@
     padding: 18px 24px 8px 24px;
       }
 
-      /* Slight spacing refinement between title and breadcrumbs */
-    .page-header .breadcrumbs{
-      margin-top: 4px;
-    }
+  /* Slight spacing refinement between title and breadcrumbs */
+  .page-header .breadcrumbs{
+    margin-top: 4px;
+  }
 
+  .page-header h1{
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.15;
+  }
 
-      .page-header h1{
-        margin: 0;
-        font-size: 2rem;
-        line-height: 1.15;
-      }
-
-      .page-header .lede{
-        margin: 8px 0 0 0;
-        opacity: .85;
-        max-width: 70ch;
-      }
+  .page-header .lede{
+    margin: 8px 0 0 0;
+    opacity: .85;
+    max-width: 70ch;
+  }
 
   main.page{
-    padding-top: 24px; /* usually fine */
+  padding-top: 24px; /* usually fine */
   }
 
   .breadcrumbs {
-    margin-top: 0.25rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
   }
 
