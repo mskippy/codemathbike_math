@@ -36,7 +36,7 @@ window.NAV_DATA = {
       pageOrder: ["lesson1", "lesson2", "lesson3"],
       pages: {
         lesson1: {
-          title: "1.1 Introduction to Financial Literacy",
+          title: "1.1 Integer Review",
           href: "/math8/unit1/lesson1/1.1_index.html"
         },
         lesson2: {

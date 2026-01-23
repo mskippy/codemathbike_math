@@ -1,136 +1,237 @@
+<!--
+FILE: lesson_index.html  (TEMPLATE)
+PURPOSE: Student-facing lesson plan + links (reference hub, not an online course)
+
+HOW TO USE:
+1) Copy this file into the lesson folder (e.g., /math8/unit1/lesson1/1.1_index.html)
+2) Update:
+   - <title>
+   - <h2> lesson title
+   - Focus + I Can goals
+   - Today’s Plan list
+   - Activity/Stations summary (names only)
+   - OneDrive links
+   - “If You Were Away” steps
+   - Key Vocabulary (lesson-only)
+3) Keep handouts/prompts behind OneDrive.
+-->
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Math 8 | Lesson</title>
+  <title>Math 8 | {{LESSON_CODE}} {{LESSON_TITLE}}</title>
 
-  <!-- Same CSS as m8_index.html -->
-<link rel="stylesheet" href="/common/css/base.css" />
-<link rel="stylesheet" href="/common/css/sidebar_math.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/common/css/base.css" />
+  <link rel="stylesheet" href="/common/css/sidebar_math.css" />
 
-<!-- Load scripts ONCE, in this order -->
-<script src="/common/js/nav_data.js" defer></script>
-<script src="/common/js/utils.js" defer></script>
-
-<!-- ✅ This is REQUIRED for <header data-partial="..."> to load -->
-<script src="/common/js/inject_partials.js" defer></script>
-
-<script src="/common/js/nav_systems.js" defer></script>
-<script src="/common/js/sidebar_math.js" defer></script>
-<script src="/common/js/main.js" defer></script>
-
+  <!-- JS -->
+  <script src="/common/js/nav_data.js" defer></script>
+  <script src="/common/js/utils.js" defer></script>
+  <script src="/common/js/inject_partials.js" defer></script>
+  <script src="/common/js/nav_systems.js" defer></script>
+  <script src="/common/js/sidebar_math.js" defer></script>
+  <script src="/common/js/main.js" defer></script>
 </head>
 
-<!--
-LESSON PAGE TAGS
-- data-course="math8"
-- data-unit="unit1"
-- data-page="lesson1"
--->
-<body data-course="math8" data-unit="unit1" data-page="lesson1">
+<!-- Update these data attributes as needed -->
+<body data-course="math8" data-unit="{{UNIT_ID}}" data-page="{{LESSON_ID}}">
 
-  <!-- Shared header partial (same CODE pattern, if you're using inject_partials.js) -->
+  <!-- Shared header partial -->
   <header id="site-header" data-partial="/common/partials/header.html"></header>
-  
 
-  <!-- ✅ Match m8_index.html layout -->
   <main class="page layout">
 
-    <!-- ✅ Left sidebar (match m8_index.html) -->
-    <aside class="sidebar">
+    <!-- Left sidebar -->
+    <aside class="sidebar" aria-label="Course navigation">
       <div data-math-sidebar></div>
     </aside>
 
-    <!-- ✅ Main content area -->
+    <!-- Main content -->
     <section class="content">
 
+      <!-- ===== HERO / LESSON OVERVIEW ===== -->
       <section class="hero">
-        <!-- NOTE: Header partial provides the H1.
-             Use H2 here for in-content titles. -->
-        <h2>Lesson Title</h2>
-      
-        <p class="lede"><strong>What We’re Learning Today</strong></p>
-      
+        <h2>{{LESSON_CODE}} {{LESSON_TITLE}}</h2>
+        <p class="lede"><strong>Focus:</strong> {{LESSON_FOCUS_ONE_LINE}}</p>
+
         <p>
-          Today we are learning how to ____________________________.
-          By the end of this lesson, you should understand how and why this works.
+          {{LESSON_SHORT_INTRO_2_SENTENCES}}
         </p>
-      
+
         <ul>
-          <li>I can ____________________________.</li>
-          <li>I can ____________________________.</li>
-          <li>I can explain my thinking using words, numbers, or diagrams.</li>
+          <li><strong>I can</strong> {{I_CAN_1}}</li>
+          <li><strong>I can</strong> {{I_CAN_2}}</li>
+          <li><strong>I can</strong> {{I_CAN_3}}</li>
         </ul>
       </section>
-      
 
+      <!-- ===== TODAY'S PLAN ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Today’s Plan</h2>
+        <p class="lede">{{TODAYS_PLAN_ONE_LINE}}</p>
+        <ol>
+          <li><strong>Warm-up:</strong> {{PLAN_WARMUP}}</li>
+          <li><strong>Main activity:</strong> {{PLAN_MAIN_ACTIVITY}}</li>
+          <li><strong>Practice time:</strong> {{PLAN_PRACTICE}}</li>
+          <li><strong>Check-in:</strong> {{PLAN_EXIT}}</li>
+        </ol>
+      </section>
+
+      <!-- ===== SUCCESS CRITERIA ===== -->
       <section class="card" style="margin-top:14px;">
         <h2>Success Criteria</h2>
         <ul>
-          <li>I can …</li>
-          <li>I can …</li>
+          <li>{{SUCCESS_1}}</li>
+          <li>{{SUCCESS_2}}</li>
+          <li>{{SUCCESS_3}}</li>
+          <li>{{SUCCESS_4}}</li>
         </ul>
       </section>
 
+      <!-- ===== WHAT YOU'LL BE DOING (HIGH-LEVEL) ===== -->
       <section class="card" style="margin-top:14px;">
-        <h2>Warm-Up</h2>
-        <ol>
-          <li>…</li>
-          <li>…</li>
-        </ol>
-      </section>
+        <h2>What You’ll Be Doing</h2>
+        <p class="lede">
+          This is a guide so you know what we’re working on. Detailed handouts and activity cards are shared in class and posted in OneDrive.
+        </p>
 
-      <section class="card" style="margin-top:14px;">
-        <h2>Mini Lesson</h2>
-        <details>
-          <summary>Example (click to expand)</summary>
-          <p><strong>Example:</strong> …</p>
-          <p><strong>Solution:</strong> …</p>
+        <details style="margin-top:10px;">
+          <summary><strong>Activity / stations summary</strong></summary>
+          <p class="lede" style="margin-top:8px;">
+            {{ACTIVITY_SUMMARY_ONE_LINE}}
+          </p>
+          <ul>
+            <li><strong>{{STATION_1_NAME}}</strong> — {{STATION_1_DESC}}</li>
+            <li><strong>{{STATION_2_NAME}}</strong> — {{STATION_2_DESC}}</li>
+            <li><strong>{{STATION_3_NAME}}</strong> — {{STATION_3_DESC}}</li>
+            <li><strong>{{STATION_4_NAME}}</strong> — {{STATION_4_DESC}}</li>
+          </ul>
+
+          <details style="margin-top:10px;">
+            <summary><strong>Station routine</strong></summary>
+            <ol style="margin-top:8px;">
+              <li>Show your thinking (whiteboard, diagrams, words, math).</li>
+              <li>Before rotating: take a photo or copy key thinking.</li>
+              <li>Start with 🟢 Green and level up if you’re ready.</li>
+            </ol>
+          </details>
         </details>
       </section>
 
+      <!-- ===== PRACTICE TIME ===== -->
       <section class="card" style="margin-top:14px;">
-        <h2>Practice (Green / Blue / Black)</h2>
+        <h2>Practice Time</h2>
+        <p class="lede">{{PRACTICE_PURPOSE_ONE_LINE}}</p>
+        <ul>
+          <li>{{PRACTICE_STEP_1}}</li>
+          <li>{{PRACTICE_STEP_2}}</li>
+          <li>{{PRACTICE_STEP_3}}</li>
+        </ul>
 
-        <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
-          <div class="card">
-            <h3>Green</h3>
-            <ul>
-              <li>Task 1</li>
-              <li>Task 2</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Blue</h3>
-            <ul>
-              <li>Task 1</li>
-              <li>Task 2</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>Black</h3>
-            <ul>
-              <li>Task 1</li>
-              <li>Task 2</li>
-            </ul>
-          </div>
-        </div>
+        <details style="margin-top:10px;">
+          <summary><strong>Optional practice (OneDrive)</strong></summary>
+          <ul style="margin-top:8px;">
+            <li><a href="{{PRACTICE_LINK_1}}" target="_blank" rel="noopener">Practice: {{PRACTICE_NAME_1}}</a></li>
+            <li><a href="{{PRACTICE_LINK_2}}" target="_blank" rel="noopener">Practice: {{PRACTICE_NAME_2}}</a></li>
+          </ul>
+        </details>
       </section>
 
+      <!-- ===== IF YOU WERE AWAY ===== -->
       <section class="card" style="margin-top:14px;">
-        <h2>Exit Check</h2>
+        <h2>If You Were Away</h2>
         <ol>
-          <li>…</li>
-          <li>…</li>
+          <li>{{AWAY_STEP_1}}</li>
+          <li>{{AWAY_STEP_2}}</li>
+          <li>{{AWAY_STEP_3}}</li>
+          <li>{{AWAY_STEP_4}}</li>
         </ol>
+        <p class="lede"><strong>Minimum:</strong> {{AWAY_MINIMUM_EXPECTATION}}</p>
+      </section>
+
+      <!-- ===== RESOURCES (ONEDRIVE LINKS) ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Lesson Resources (OneDrive)</h2>
+        <p class="lede">These resources are shared through OneDrive so students always have the correct versions.</p>
+        <ul>
+          <li><a href="{{OD_LINK_1}}" target="_blank" rel="noopener">{{OD_NAME_1}}</a></li>
+          <li><a href="{{OD_LINK_2}}" target="_blank" rel="noopener">{{OD_NAME_2}}</a></li>
+          <li><a href="{{OD_LINK_3}}" target="_blank" rel="noopener">{{OD_NAME_3}}</a></li>
+          <li><a href="{{OD_LINK_4}}" target="_blank" rel="noopener">{{OD_NAME_4}}</a></li>
+        </ul>
+
+        <details style="margin-top:10px;">
+          <summary><strong>Need help finding OneDrive files?</strong></summary>
+          <p class="lede" style="margin-top:8px;">
+            {{ONEDRIVE_HELP_NOTE}}
+          </p>
+        </details>
       </section>
 
     </section>
+
+    <!-- ===== RIGHT RAIL ===== -->
+    <aside class="right-rail" aria-label="Lesson support">
+
+      <!-- Key Vocabulary: lesson-specific only -->
+      <section class="card">
+        <h3>Key Vocabulary ({{LESSON_CODE}})</h3>
+        <p class="lede">Use these words to explain your thinking.</p>
+
+        <!-- Duplicate / remove as needed (aim for ~6–8 terms max) -->
+        <details>
+          <summary><strong>{{VOCAB_1_TERM}}</strong></summary>
+          <p>{{VOCAB_1_DEF}}</p>
+        </details>
+
+        <details>
+          <summary><strong>{{VOCAB_2_TERM}}</strong></summary>
+          <p>{{VOCAB_2_DEF}}</p>
+        </details>
+
+        <details>
+          <summary><strong>{{VOCAB_3_TERM}}</strong></summary>
+          <p>{{VOCAB_3_DEF}}</p>
+        </details>
+
+        <details>
+          <summary><strong>{{VOCAB_4_TERM}}</strong></summary>
+          <p>{{VOCAB_4_DEF}}</p>
+        </details>
+
+        <details>
+          <summary><strong>{{VOCAB_5_TERM}}</strong></summary>
+          <p>{{VOCAB_5_DEF}}</p>
+        </details>
+
+        <details>
+          <summary><strong>{{VOCAB_6_TERM}}</strong></summary>
+          <p>{{VOCAB_6_DEF}}</p>
+        </details>
+      </section>
+
+      <!-- Optional: quick tip / help block -->
+      <section class="card" style="margin-top:14px;">
+        <h3>Quick Tip</h3>
+        <p class="lede">{{QUICK_TIP_TEXT}}</p>
+      </section>
+
+      <!-- Optional: extra help links -->
+      <section class="card" style="margin-top:14px;">
+        <h3>Extra Help</h3>
+        <ul>
+          <li><a href="{{HELP_LINK_1}}" target="_blank" rel="noopener">{{HELP_NAME_1}}</a></li>
+          <li><a href="{{HELP_LINK_2}}" target="_blank" rel="noopener">{{HELP_NAME_2}}</a></li>
+        </ul>
+      </section>
+
+    </aside>
+
   </main>
 
-
+  <footer id="site-footer" data-partial="/common/partials/footer.html"></footer>
 </body>
 </html>

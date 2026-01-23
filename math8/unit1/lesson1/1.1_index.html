@@ -3,61 +3,209 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Math 8 • 1.1 | CodeMathBike</title>
+  <title>Math 8 | 1.1 Integer Review</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="/common/css/base.css" />
-  <link rel="stylesheet" href="/common/css/theme_math.css" />
-</head>
-<body>
+  <link rel="stylesheet" href="/common/css/sidebar_math.css" />
 
-  <header data-partial="/common/partials/header.html"></header>
+  <!-- JS -->
+  <script src="/common/js/nav_data.js" defer></script>
+  <script src="/common/js/utils.js" defer></script>
+  <script src="/common/js/inject_partials.js" defer></script>
+  <script src="/common/js/nav_systems.js" defer></script>
+  <script src="/common/js/sidebar_math.js" defer></script>
+  <script src="/common/js/main.js" defer></script>
+</head>
+
+<body data-course="math8" data-unit="unit1" data-page="lesson1">
+
+  <!-- Header -->
+  <header id="site-header" data-partial="/common/partials/header.html"></header>
 
   <main class="page layout">
-    <div data-partial="/common/partials/sidebar.html"></div>
 
-    <section>
+    <!-- Left Sidebar -->
+    <aside class="sidebar" aria-label="Course navigation">
+      <div data-math-sidebar></div>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="content">
+
+      <!-- ===== HERO ===== -->
       <section class="hero">
-        <h1>1.1: Getting Started</h1>
-        <p class="lede">Warm-up routines + choosing your level (Green / Blue / Black).</p>
+        <h2>What We're Learning Today</h2>
+        <p class="lede"><strong>Focus:</strong> Thinking with numbers (not writing a test)</p>
+
+        <p>
+          This page is your <strong>lesson guide</strong>—it explains what we’re working on and how today is structured.
+          The <strong>activity cards and handouts</strong> are shared in class and posted in OneDrive.
+        </p>
+
+        <ul>
+          <li><strong>I can</strong> explain what positive and negative integers represent in real situations.</li>
+          <li><strong>I can</strong> use a number line (or reasoning) to describe changes above and below zero.</li>
+          <li><strong>I can</strong> show and explain my thinking (not just answers).</li>
+        </ul>
       </section>
 
-      <section class="grid">
-        <div class="card">
-          <h2>Warm-up</h2>
-          <p>5–8 minutes: estimation + mental math.</p>
-        </div>
+      <!-- ===== WHAT WE'RE DOING TODAY ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>What We’re Doing Today</h2>
+        <p class="lede">A problem-solving day with puzzles + stations.</p>
 
-        <div class="card">
-          <h2>Green</h2>
-          <p>Core skills practice (guided).</p>
-        </div>
+        <ol>
+          <li><strong>Warm-up:</strong> KenKen puzzle (reasoning + patterns)</li>
+          <li><strong>Stations:</strong> Integer thinking tasks (Green / Blue / Black)</li>
+          <li><strong>Practice time:</strong> quiet fluency practice</li>
+          <li><strong>Exit reflection:</strong> quick check-in</li>
+        </ol>
+      </section>
 
-        <div class="card">
-          <h2>Blue</h2>
-          <p>Multi-step practice + explain your thinking.</p>
-        </div>
+      <!-- ===== SUCCESS CRITERIA ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Success Criteria</h2>
+        <ul>
+          <li>I show clear thinking (diagrams, number lines, words, or math).</li>
+          <li>I can explain what a negative value means in context.</li>
+          <li>I can describe a change (gain/loss) and what it does to the value.</li>
+          <li>I check if my answer makes sense.</li>
+        </ul>
+      </section>
 
-        <div class="card">
-          <h2>Black</h2>
-          <p>Challenge: optimize, justify, or create your own example.</p>
-        </div>
+      <!-- ===== STATIONS (NAMES ONLY) ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Station Challenges</h2>
+        <p class="lede">
+          You’ll rotate through stations. At each station, start with <strong>🟢 Green</strong> and level up to
+          <strong>🔵 Blue</strong> or <strong>⚫ Black</strong> if you’re ready.
+        </p>
+
+        <h3 style="margin-top:10px;">Station List</h3>
+        <ul>
+          <li><strong>Station 1:</strong> Integer Path Challenge (number line thinking)</li>
+          <li><strong>Station 2:</strong> True / False / Fix It (error analysis)</li>
+          <li><strong>Station 3:</strong> Integer Stories (context + meaning)</li>
+          <li><strong>Station 4:</strong> Strategy Sorting (compare + explain)</li>
+        </ul>
+
+        <details style="margin-top:10px;">
+          <summary><strong>Station routine</strong></summary>
+          <ol style="margin-top:8px;">
+            <li>Work on the whiteboard and show your thinking.</li>
+            <li>Before rotating: take a photo <em>or</em> copy key thinking onto your paper.</li>
+            <li>Rotate when time is called.</li>
+          </ol>
+          <p class="lede">Goal: thinking on the boards, not perfection.</p>
+        </details>
+      </section>
+
+      <!-- ===== PRACTICE TIME (WHOLE GROUP) ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Practice Time</h2>
+        <p class="lede">After stations, we’ll do a short quiet practice block to build fluency.</p>
+        <ul>
+          <li>Solve a small set of integer questions (selected in class).</li>
+          <li>Show your thinking.</li>
+          <li>Circle the one you felt most confident with. Star the hardest.</li>
+        </ul>
+      </section>
+
+      <!-- ===== ABSENT? ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>If You Were Away</h2>
+        <ol>
+          <li>Review the <strong>Key Vocabulary</strong> (right side).</li>
+          <li>In OneDrive, complete the <strong>Lesson 1.1 Stations Catch-Up</strong> (Green level minimum).</li>
+          <li>Do the <strong>Integer Practice</strong> set (6–8 questions).</li>
+          <li>Check in with me next class if anything is unclear.</li>
+        </ol>
+      </section>
+
+      <!-- ===== RESOURCES (LINKS PLACEHOLDERS) ===== -->
+      <section class="card" style="margin-top:14px;">
+        <h2>Lesson Resources (OneDrive)</h2>
+        <p class="lede">These links are posted in OneDrive for students.</p>
+        <ul>
+          <li><a href="#" aria-label="Lesson 1.1 station cards link">Lesson 1.1 Station Cards (PDF)</a></li>
+          <li><a href="#" aria-label="Lesson 1.1 recording sheet link">Station Recording Sheet</a></li>
+          <li><a href="#" aria-label="Integer notes link">Integer Notes (optional)</a></li>
+          <li><a href="#" aria-label="Integer practice link">Integer Practice (selected questions)</a></li>
+        </ul>
+
+        <details style="margin-top:10px;">
+          <summary><strong>Why some materials are in OneDrive</strong></summary>
+          <p class="lede" style="margin-top:8px;">
+            The website is a guide and reference. Activity handouts are shared through OneDrive so students have the correct
+            versions and can access them with their school account.
+          </p>
+        </details>
+      </section>
+
+    </section>
+
+    <!-- Right Rail -->
+    <aside class="right-rail" aria-label="Lesson support">
+
+      <section class="card">
+        <h3>Key Vocabulary (Lesson 1.1)</h3>
+        <p class="lede">Use these words to explain your thinking.</p>
+
+        <details>
+          <summary><strong>Integer</strong></summary>
+          <p>A whole number that can be positive, negative, or zero (e.g., –4, 0, 7).</p>
+        </details>
+
+        <details>
+          <summary><strong>Positive</strong></summary>
+          <p>A number greater than zero. Often represents a gain or increase.</p>
+        </details>
+
+        <details>
+          <summary><strong>Negative</strong></summary>
+          <p>A number less than zero. Often represents a loss or decrease.</p>
+        </details>
+
+        <details>
+          <summary><strong>Zero</strong></summary>
+          <p>The reference point: no gain and no loss.</p>
+        </details>
+
+        <details>
+          <summary><strong>Number Line</strong></summary>
+          <p>A visual model showing numbers increasing to the right and decreasing to the left.</p>
+        </details>
+
+        <details>
+          <summary><strong>Gain / Increase</strong></summary>
+          <p>A change that moves a value up or to the right on a number line.</p>
+        </details>
+
+        <details>
+          <summary><strong>Loss / Decrease</strong></summary>
+          <p>A change that moves a value down or to the left on a number line.</p>
+        </details>
+
+        <details>
+          <summary><strong>Reasoning</strong></summary>
+          <p>Explaining why an answer makes sense using words, diagrams, or math.</p>
+        </details>
       </section>
 
       <section class="card" style="margin-top:14px;">
-        <h2>Downloads</h2>
-        <ul>
-          <li><a href="downloads/practice_1_1.pdf" download>Practice Sheet (1.1)</a></li>
-        </ul>
-        <p class="lede" style="margin-top:10px;">Lesson assets live in: <code>assets/</code> and <code>downloads/</code>.</p>
+        <h3>Quick Tip</h3>
+        <p class="lede">
+          When you see a negative number, ask: <strong>“Below what?”</strong> (below zero, below a starting value, below sea level, etc.)
+        </p>
       </section>
-    </section>
+
+    </aside>
+
   </main>
 
-  <footer data-partial="/common/partials/footer.html"></footer>
+  <!-- Footer -->
+  <footer id="site-footer" data-partial="/common/partials/footer.html"></footer>
 
-  <script src="/common/js/nav_data.js"></script>
-  <script src="/common/js/nav_systems.js"></script>
-  <script src="/common/js/inject_partials.js"></script>
-  <script src="/common/js/main.js"></script>
 </body>
 </html>
