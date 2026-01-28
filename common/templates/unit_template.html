@@ -3,17 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Math 8 | Unit</title>
+  <title>Math 8 | {{UNIT_CODE}} {{UNIT_TITLE}}</title>
 
-  <!-- Same CSS stack as your working Math pages -->
+  <!-- CSS -->
   <link rel="stylesheet" href="/common/css/base.css" />
   <link rel="stylesheet" href="/common/css/sidebar_math.css" />
 
-  <!-- Same script stack as your working Math pages -->
+  <!-- JS (single nav system) -->
   <script src="/common/js/nav_data.js" defer></script>
   <script src="/common/js/utils.js" defer></script>
   <script src="/common/js/inject_partials.js" defer></script>
-  <script src="/common/js/nav_systems.js" defer></script>
   <script src="/common/js/sidebar_math.js" defer></script>
   <script src="/common/js/main.js" defer></script>
 </head>
@@ -23,12 +22,11 @@ UNIT PAGE TAGS
 - data-course must match NAV_DATA key (math8)
 - data-unit must match units key (unit1, unit2, ...)
 -->
-<body data-course="math8" data-unit="unit1">
+<body data-course="math8" data-unit="{{UNIT_ID}}">
 
   <!-- Shared header partial -->
   <header id="site-header" data-partial="/common/partials/header.html"></header>
 
-  <!-- Matches m8_index.html layout -->
   <main class="page layout">
 
     <!-- Left sidebar -->
@@ -41,66 +39,64 @@ UNIT PAGE TAGS
 
       <!-- Unit overview -->
       <section class="hero">
-        <h2>Unit 1: Unit Title</h2>
+        <h2>{{UNIT_CODE}} {{UNIT_TITLE}}</h2>
         <p class="lede">
-          Short unit overview goes here. One or two sentences for students: what this unit is about and why it matters.
+          {{UNIT_OVERVIEW_1_2_SENTENCES}}
         </p>
       </section>
 
       <section class="card" style="margin-top:14px;">
         <h2>What You’ll Learn</h2>
         <ul>
-          <li>Learning target / skill</li>
-          <li>Learning target / skill</li>
-          <li>Learning target / skill</li>
+          <li>{{LEARN_1}}</li>
+          <li>{{LEARN_2}}</li>
+          <li>{{LEARN_3}}</li>
         </ul>
       </section>
 
       <section class="card" style="margin-top:14px;">
         <h2>Big Ideas</h2>
         <ul>
-          <li>Big idea #1</li>
-          <li>Big idea #2</li>
+          <li>{{BIG_IDEA_1}}</li>
+          <li>{{BIG_IDEA_2}}</li>
         </ul>
       </section>
 
       <!-- Lesson outline -->
       <section class="card" style="margin-top:14px;">
         <h2>Lesson Outline</h2>
-        <p class="lede">Add lesson links here (or just placeholders until lessons exist).</p>
+        <p class="lede">Links to each lesson page for this unit.</p>
 
-        <div class="units-nav" style="margin-top:10px;">
-          <!-- Replace these with real hrefs as you build lessons -->
-          <a class="unit-link" href="/math8/unit1/lesson1/1.1_index.html">1.1 Lesson Title</a>
-          <a class="unit-link" href="/math8/unit1/lesson2/1.2_index.html">1.2 Lesson Title</a>
-          <a class="unit-link" href="/math8/unit1/lesson3/1.3_index.html">1.3 Lesson Title</a>
-        </div>
+        <ul style="margin-top:10px;">
+          <li><a href="{{L1_HREF}}">{{L1_LABEL}}</a></li>
+          <li><a href="{{L2_HREF}}">{{L2_LABEL}}</a></li>
+          <li><a href="{{L3_HREF}}">{{L3_LABEL}}</a></li>
+          <li><a href="{{L4_HREF}}">{{L4_LABEL}}</a></li>
+          <li><a href="{{L5_HREF}}">{{L5_LABEL}}</a></li>
+        </ul>
       </section>
 
-      <!-- Optional placeholders (keep/remove) -->
       <section class="card" style="margin-top:14px;">
         <h2>Resources</h2>
         <ul>
-          <li><a href="#">Practice Sheet (PDF)</a></li>
-          <li><a href="#">Worked Examples</a></li>
-          <li><a href="#">Video / Slides</a></li>
+          <li><a href="{{RES_1_HREF}}" target="_blank" rel="noopener">{{RES_1_LABEL}}</a></li>
+          <li><a href="{{RES_2_HREF}}" target="_blank" rel="noopener">{{RES_2_LABEL}}</a></li>
+          <li><a href="{{RES_3_HREF}}" target="_blank" rel="noopener">{{RES_3_LABEL}}</a></li>
         </ul>
       </section>
 
       <section class="card" style="margin-top:14px;">
         <h2>How You’ll Be Assessed</h2>
         <ul>
-          <li>Daily practice + checkpoints</li>
-          <li>One short quiz</li>
-          <li>Unit task / mini project</li>
+          <li>{{ASSESS_1}}</li>
+          <li>{{ASSESS_2}}</li>
+          <li>{{ASSESS_3}}</li>
         </ul>
       </section>
 
     </section>
   </main>
 
-  <!-- Shared footer (optional if you’re using it everywhere) -->
   <footer id="site-footer" data-partial="/common/partials/footer.html"></footer>
-
 </body>
 </html>
