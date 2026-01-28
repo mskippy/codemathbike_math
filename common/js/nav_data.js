@@ -25,15 +25,18 @@ window.NAV_DATA = {
   // --------------------------------------------------------------------------
   math8: {
   title: "Math 8",
-  href: " /math8/m8_index.html",
+  href: "/math8/m8_index.html",
 
   unitOrder: ["unit1", "unit2", "unit3", "unit4", "unit5"],
 
   units: {
-    unit1: {
+   unit1: {
       title: "U1: Financial Foundations",
       href: "/math8/unit1/u1_index.html",
-      pageOrder: ["lesson1", "lesson2", "lesson3"],
+
+      // ✅ include everything you want to show in the nav
+      pageOrder: ["lesson1", "lesson2", "lesson3", "lesson4", "lesson5", "task"],
+
       pages: {
         lesson1: {
           title: "1.1 Integer Review",
@@ -46,9 +49,24 @@ window.NAV_DATA = {
         lesson3: {
           title: "1.3 Multi-Step Money Problems",
           href: "/math8/unit1/lesson3/1.3_index.html"
+        },
+
+        // ✅ add these (match your actual folder names)
+        lesson4: {
+          title: "1.4 Order of Operations (Money Contexts)",
+          href: "/math8/unit1/lesson4/1.4_index.html"
+        },
+        lesson5: {
+          title: "1.5 Estimation, Rounding & Reasonableness Checks",
+          href: "/math8/unit1/lesson5/1.5_index.html"
+        },
+        task: {
+          title: "1.6 Unit Task: Bank Account Simulator",
+          href: "/math8/unit1/task/1.6_index.html"
         }
       }
     },
+
 
     unit2: {
       title: "Unit 2: Ratios & Rates",
