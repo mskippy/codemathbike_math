@@ -1,234 +1,124 @@
-/* ============================================================================
-  sidebar_math.js (Math v2 sidebar)
-  - Mounts into: <div data-math-sidebar></div>
-  - Reads: window.NAV_DATA = { math8:{...}, math9:{...}, fmpc10:{...} }
-  - Works for deployments where Math lives at "/" and course folders are:
-      /math8/..., /math9/..., /fmpc10/...
-  - Also works if you later deploy with a /math/ prefix, because we don’t hardcode it.
-============================================================================ */
-
+// /common/js/sidebar_math.js
 (function () {
-  "use strict";
+  function normalizePath(p) {
+    if (!p) return "";
+    p = p.split("?")[0].split("#")[0];
 
-  const MOUNT_SELECTOR = "[data-math-sidebar]";
-  const COURSE_KEYS_IN_SELECTOR = ["math8", "math9", "fmpc10"];
+    // normalize trailing slash vs file paths
+    // Treat ".../unit1/" and ".../unit1/u1_index.html" as equivalent by removing *_index.html
+    p = p.replace(/\/(u\d+_index|m\d+_index)\.html$/i, "/");
 
-  // ---------- helpers ----------
-  function normalizePath(path) {
-    try {
-      const u = new URL(path, window.location.origin);
-      return (u.pathname || "").replace(/\/+$/, "");
-    } catch {
-      return (path || "").split("#")[0].split("?")[0].replace(/\/+$/, "");
-    }
+    // Always ensure trailing slash for consistent comparisons
+    if (!p.endsWith("/")) p += "/";
+    return p;
   }
 
-  function getHrefPathAndHash(href) {
-    const parts = (href || "").split("#");
-    return {
-      path: normalizePath(parts[0] || ""),
-      hash: parts[1] ? `#${parts[1]}` : "",
-    };
+  function isActiveLink(currentNorm, href) {
+    const hrefNorm = normalizePath(href);
+
+    // exact match after normalization OR current starts with href (useful for unit sections)
+    return currentNorm === hrefNorm || currentNorm.startsWith(hrefNorm);
   }
 
-  function isActiveLink(href) {
-    const { path: hrefPath, hash: hrefHash } = getHrefPathAndHash(href);
-    const locPath = normalizePath(window.location.pathname);
-    const locHash = window.location.hash || "";
-
-    if (!hrefPath) return false;
-    if (hrefPath !== locPath) return false;
-    if (hrefHash) return hrefHash === locHash;
-    return true;
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
   }
 
-  function el(tag, attrs = {}, children = []) {
-    const node = document.createElement(tag);
-    Object.entries(attrs).forEach(([k, v]) => {
-      if (k === "class") node.className = v;
-      else if (k === "text") node.textContent = v;
-      else node.setAttribute(k, v);
-    });
-    children.forEach((c) => node.appendChild(c));
-    return node;
-  }
-
-  function orderedKeys(order, obj) {
-    if (!obj) return [];
-    if (Array.isArray(order) && order.length) return order.filter((k) => k in obj);
-    return Object.keys(obj);
-  }
-
-  function courseKeyFromBody(navData) {
-    const key = document.body?.dataset?.course;
-    if (!key) return "";
-    const k = String(key).trim();
-    return navData && navData[k] ? k : "";
-  }
-
-  function courseKeyFromPath(navData) {
-    // If URL is /math8/unit1/... -> first segment is "math8"
-    const parts = normalizePath(window.location.pathname).split("/").filter(Boolean);
-    const maybe = parts[0] || "";
-    return navData && navData[maybe] ? maybe : "";
-  }
-
-  function resolveCurrentCourseKey(navData) {
-    const fromBody = courseKeyFromBody(navData);
-    if (fromBody) return fromBody;
-
-    const fromPath = courseKeyFromPath(navData);
-    if (fromPath) return fromPath;
-
-    // fallback: first available course with units
-    const available = COURSE_KEYS_IN_SELECTOR
-      .filter((k) => navData[k])
-      .filter((k) => Object.keys(navData[k]?.units || {}).length > 0);
-
-    if (available.length) return available[0];
-    return "";
-  }
-
-  function unitContainsActive(unit) {
-    if (!unit) return false;
-    if (unit.href && isActiveLink(unit.href)) return true;
-
-    const pages = unit.pages || {};
-    return Object.keys(pages).some((k) => pages[k]?.href && isActiveLink(pages[k].href));
-  }
-
-  // ---------- builders ----------
-  function buildCourseSelector(navData, currentKey) {
-    // Only show courses that have real units (content)
-    const available = COURSE_KEYS_IN_SELECTOR
-      .filter((key) => navData[key])
-      .filter((key) => Object.keys(navData[key]?.units || {}).length > 0);
-
-    // If only one course exists, show a clean header (no selector links)
-    if (available.length <= 1) {
-      const course = navData[currentKey] || navData[available[0]];
-      const header = el("div", { class: "m8-course-header" });
-      header.appendChild(el("div", { class: "m8-course-title", text: course?.title || "Math" }));
-      return header;
+  function buildSidebar(container, courseKey) {
+    const nav = window.NAV_DATA?.[courseKey];
+    if (!nav) {
+      container.innerHTML = `<div class="m8-sidebar"><p>Nav data missing for "${escapeHtml(courseKey)}".</p></div>`;
+      return;
     }
 
-    // Otherwise show selector links
-    const wrap = el("div", { class: "m8-course-selector" });
+    const current = normalizePath(window.location.pathname);
 
-    available.forEach((key) => {
-      const course = navData[key];
-      const a = el("a", {
-        href: course.href || "#",
-        class: "m8-course-link" + (key === currentKey ? " active" : ""),
-      });
-      a.textContent = course.title || key;
-      wrap.appendChild(a);
-    });
+    const units = nav.units || {};
+    const unitEntries = Object.entries(units);
 
-    return wrap;
-  }
-
-  function buildUnitAccordionCard({ unit, openByDefault, collapseGroupEl }) {
-    const pages = unit.pages || {};
-    const hasPages = Object.keys(pages).length > 0;
-
-    const details = el("details", { class: "m8-sidebar-unit m8-unit-card" });
-    if (openByDefault) details.open = true;
-    if (openByDefault) details.classList.add("active");
-
-    details.addEventListener("toggle", () => {
-      details.classList.toggle("active", details.open);
-
-      // close other units when one opens
-      if (!details.open || !collapseGroupEl) return;
-      collapseGroupEl.querySelectorAll("details.m8-sidebar-unit").forEach((d) => {
-        if (d !== details) {
-          d.open = false;
-          d.classList.remove("active");
-        }
-      });
-    });
-
-    const summary = el("summary", { class: "m8-sidebar-unit-summary" });
-
-    // unit title link (go to unit page)
-    const titleLink = el("a", {
-      href: unit.href || "#",
-      class: "m8-sidebar-unit-titlelink",
-    });
-    titleLink.textContent = unit.title || "Untitled Unit";
-
-    // Clicking the link should navigate, not toggle
-    titleLink.addEventListener("click", (e) => e.stopPropagation());
-
-    const chevron = el("span", { class: "m8-sidebar-unit-chevron" });
-
-    summary.appendChild(titleLink);
-    summary.appendChild(chevron);
-    details.appendChild(summary);
-
-    // pages list
-    if (hasPages) {
-      const keys = orderedKeys(unit.pageOrder, pages);
-      const ul = el("ul", { class: "m8-sidebar-sublist" });
-
-      keys.forEach((pk) => {
-        const p = pages[pk];
-        if (!p?.href) return;
-
-        const a = el("a", {
-          href: p.href,
-          class: "m8-sidebar-link" + (isActiveLink(p.href) ? " active" : ""),
-        });
-        a.textContent = p.title || p.href;
-        ul.appendChild(el("li", { class: "m8-sidebar-item" }, [a]));
-      });
-
-      details.appendChild(ul);
+    // Find the "current unit" to auto-expand
+    let currentUnitKey = null;
+    for (const [uKey, unit] of unitEntries) {
+      if (!unit?.href) continue;
+      if (isActiveLink(current, unit.href)) {
+        currentUnitKey = uKey;
+        break;
+      }
+      // also match any lesson inside the unit
+      const lessons = unit.lessons || [];
+      if (lessons.some(lsn => isActiveLink(current, lsn.href))) {
+        currentUnitKey = uKey;
+        break;
+      }
     }
 
-    return details;
+    const homeHref = nav.home?.href || "#";
+    const homeLabel = nav.home?.label || "Home";
+
+    const unitsHtml = unitEntries.map(([uKey, unit]) => {
+      const openAttr = (uKey === currentUnitKey) ? " open" : "";
+      const unitActive = unit?.href && isActiveLink(current, unit.href);
+      const unitLabel = unit?.label || uKey;
+      const unitHref = unit?.href || "#";
+
+      const lessons = Array.isArray(unit.lessons) ? unit.lessons : [];
+      const lessonsHtml = lessons.map(lsn => {
+        const active = isActiveLink(current, lsn.href) ? " active" : "";
+        return `
+          <li class="m8-sidebar-item">
+            <a class="m8-sidebar-link${active}" href="${lsn.href}">${escapeHtml(lsn.label)}</a>
+          </li>
+        `;
+      }).join("");
+
+      return `
+        <details class="m8-unit-card"${openAttr}>
+          <summary class="m8-unit-summary">
+            <a class="m8-unit-link${unitActive ? " active" : ""}" href="${unitHref}">
+              ${escapeHtml(unitLabel)}
+            </a>
+          </summary>
+          <ul class="m8-lesson-list">
+            ${lessonsHtml || `<li class="m8-sidebar-item muted">No lessons listed yet.</li>`}
+          </ul>
+        </details>
+      `;
+    }).join("");
+
+    container.innerHTML = `
+      <nav class="m8-sidebar">
+        <div class="m8-sidebar-home">
+          <a class="m8-home-link${isActiveLink(current, homeHref) ? " active" : ""}" href="${homeHref}">
+            ${escapeHtml(homeLabel)}
+          </a>
+        </div>
+
+        <div class="m8-sidebar-section-label">Units</div>
+
+        <div class="m8-units">
+          ${unitsHtml}
+        </div>
+      </nav>
+    `;
+
+    // Add active class to the matching unit link when a lesson is active
+    // (nice UX; optional)
+    container.querySelectorAll(".m8-lesson-list a.active").forEach(a => {
+      const details = a.closest("details");
+      if (details) details.setAttribute("open", "open");
+    });
   }
 
-  // ---------- init ----------
-  function init() {
-    const mount = document.querySelector(MOUNT_SELECTOR);
+  document.addEventListener("DOMContentLoaded", () => {
+    const mount = document.querySelector("[data-math-sidebar]");
     if (!mount) return;
 
-    const navData = window.NAV_DATA || {};
-    const currentKey = resolveCurrentCourseKey(navData);
-
-    mount.innerHTML = "";
-
-    // If we can't resolve a course, don't render anything noisy.
-    if (!currentKey || !navData[currentKey]) return;
-
-    const outer = el("div", { class: "m8-sidebar" });
-
-    // 1) Course header/selector
-    outer.appendChild(buildCourseSelector(navData, currentKey));
-
-    // 2) Units + pages
-    const course = navData[currentKey];
-    const units = course.units || {};
-    const unitKeys = orderedKeys(course.unitOrder, units);
-
-    outer.appendChild(el("div", { class: "m8-sidebar-section-label", text: "Units" }));
-
-    const unitsContainer = el("div", { class: "m8-sidebar-units" });
-
-    unitKeys.forEach((uk) => {
-      const unit = units[uk];
-      if (!unit) return;
-      const open = unitContainsActive(unit);
-      unitsContainer.appendChild(
-        buildUnitAccordionCard({ unit, openByDefault: open, collapseGroupEl: unitsContainer })
-      );
-    });
-
-    outer.appendChild(unitsContainer);
-    mount.appendChild(outer);
-  }
-
-  document.addEventListener("DOMContentLoaded", init);
+    const courseKey = document.body.dataset.course || "math8"; // default
+    buildSidebar(mount, courseKey);
+  });
 })();

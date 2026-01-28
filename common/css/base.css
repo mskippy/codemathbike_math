@@ -32,8 +32,6 @@
     color: #7b3fe4;
   }
 
-
-  
   .page{
     max-width: 1100px;
     margin: 0 auto;
@@ -62,36 +60,6 @@
     padding-right: 24px;
     padding-top: 16px;
   }
-
-  
-  .nav-shell{
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  
-  .nav-brand a{
-    text-decoration: none;
-    font-weight: 700;
-  }
-  
-  .nav-links{
-    display: flex;
-    gap: 12px;
-  }
-  .nav-links a{
-    text-decoration: none;
-    padding: 8px 10px;
-    border-radius: 12px;
-    border: 1px solid transparent;
-  }
-  .nav-links a:hover{
-    border-color: var(--border);
-  }
   
   .sidebar{
     border: 1px solid var(--border);
@@ -99,30 +67,6 @@
     padding: 14px;
     background: var(--card);
     box-shadow: var(--shadow);
-  }
-  .sidebar-title{
-    margin: 0 0 10px;
-    font-size: 1.05rem;
-  }
-  .side-nav{
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .side-link{
-    text-decoration: none;
-    padding: 8px 10px;
-    border-radius: 12px;
-    border: 1px solid transparent;
-    color: var(--muted);
-  }
-  .side-link:hover{ 
-    border-color: var(--border); 
-    color: var(--ink); 
-  }
-  a.active{ 
-    border-color: var(--border); 
-    color: var(--ink); 
   }
 
   .hero{
@@ -159,37 +103,7 @@
     color: var(--muted);
   }
   
-  .side-divider{
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 12px 0;
-  }
-  
-  .units-title{
-    font-weight: 700;
-    margin: 0 0 8px;
-    opacity: 0.85;
-  }
-  
-  .units-nav{
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  
-  .unit-link{
-    text-decoration: none;
-    padding: 10px 12px;
-    border-radius: 14px;
-    border: 1px solid transparent;
-    color: rgba(15,23,42,0.75);
-  }
-  
-  .unit-link:hover{
-    border-color: var(--border);
-    color: var(--ink);
-  }
-  
+
   /* ===== Sticky Top Header (Math + Code style) ===== */
   /* ===== Sticky, full-width header aligned with page grid ===== */
   .site-header{
@@ -201,12 +115,6 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* Constrain whatever nav_systems.js renders so it aligns with .page */
-    .site-header [data-top-nav]{
-      max-width: 1100px;     /* same as .page */
-      margin: 0 auto;
-      padding: 14px 18px;    /* match your .page padding feel */
-    }
 
   /* ===== Page Title Header (matches CODE vibes) ===== */
   .page-header{
@@ -289,3 +197,118 @@
     display:none;
   }
 }
+
+/* ================================
+   Math 8 Sidebar (CODE-style)
+   ================================ */
+
+.m8-sidebar,
+.m8-sidebar a {
+  text-decoration: none; /* no underline anywhere */
+}
+
+.m8-sidebar {
+  display: block;
+}
+
+/* HOME */
+.m8-sidebar-home {
+  margin-bottom: 12px;
+}
+
+.m8-home-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 2px 0;
+}
+
+/* Section label */
+.m8-sidebar-section-label {
+  font-weight: 700;
+  margin: 12px 0 10px;
+  opacity: 0.75;
+}
+
+/* Units container */
+.m8-units {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Remove the “card” look completely */
+.m8-unit-card {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+/* Remove chevron / marker from <summary> */
+.m8-unit-card > summary {
+  list-style: none;
+}
+.m8-unit-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Unit line */
+.m8-unit-summary {
+  cursor: default; /* looks like CODE list */
+}
+
+/* Unit link styling */
+.m8-unit-link {
+  display: inline-block;
+  font-weight: 500;
+  color: var(--accent);
+  padding: 2px 0;
+}
+
+/* Bold the current unit */
+.m8-unit-link.active {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* Lessons list: no bullets, no boxes */
+.m8-lesson-list {
+  margin: 8px 0 0 0;
+  padding: 0 0 0 14px; /* indent */
+  list-style: none;    /* no bullets */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  /* grouping line */
+  border-left: 2px solid rgba(15, 23, 42, 0.18);
+}
+
+.m8-sidebar-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.m8-sidebar-link {
+  display: block;
+  padding: 2px 0;      /* no “pill” */
+  border: 0;           /* no square */
+  border-radius: 0;
+  color: rgba(15, 23, 42, 0.82);
+}
+
+/* Active lesson: bold + slightly darker */
+.m8-sidebar-link.active {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* Optional: hover (still no underline) */
+.m8-sidebar-link:hover,
+.m8-unit-link:hover,
+.m8-home-link:hover {
+  color: var(--ink);
+}
+
