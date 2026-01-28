@@ -8,7 +8,7 @@ window.NAV_DATA = {
         label: "U1: Financial Foundations",
         href: "/math8/unit1/u1_index.html",
         lessons: [
-          { label: "1.1 Integer Review",                 href: "/math8/unit1/lesson1/1.1_index.html" },
+          { label: "1.1 Getting Ready for Math 8",                 href: "/math8/unit1/lesson1/1.1_index.html" },
           { label: "1.2 Adding & Subtracting Integers",  href: "/math8/unit1/lesson2/1.2_index.html" },
           { label: "1.3 Multi-Step Integer Problems",     href: "/math8/unit1/lesson3/1.3_index.html" },
           { label: "1.4 Order of Operations",             href: "/math8/unit1/lesson4/1.4_index.html" },
