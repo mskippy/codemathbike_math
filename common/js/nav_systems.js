@@ -5,14 +5,11 @@ function setActiveLinks(root = document) {
     const href = a.getAttribute("href");
     if (!href || href.startsWith("http")) return;
 
-    // Mark active for exact match OR same page section jump
-    if (href === path || (href.startsWith(window.location.pathname) && href === window.location.pathname)) {
+    if (href === path || href === window.location.pathname) {
       a.classList.add("active");
     }
-
-    // Also handle when you're on the same page and click a hash link
-    if (href.startsWith(window.location.pathname + "#") && window.location.pathname === window.location.pathname) {
-      if (href === window.location.pathname + window.location.hash) a.classList.add("active");
+    if (href === window.location.pathname + window.location.hash) {
+      a.classList.add("active");
     }
   });
 }
@@ -22,48 +19,33 @@ function buildLinks(list, cls = "") {
 }
 
 window.initNavSystems = function initNavSystems() {
-  const data = window.NAV_DATA;
+  const meta = window.NAV_META || {};
+  const data = window.NAV_DATA || {};
   if (!data) return;
 
-  // Top nav
+  // Top nav (header)
   const top = document.querySelector("#math-top-nav");
-  if (top) {
+  if (top && meta?.brand && meta?.topLinks) {
     top.innerHTML = `
-      <div class="nav-brand"><a href="${data.brand.href}">${data.brand.label}</a></div>
-      <nav class="nav-links">${buildLinks(data.topLinks)}</nav>
+      <div class="nav-brand"><a href="${meta.brand.href}">${meta.brand.label}</a></div>
+      <nav class="nav-links">${buildLinks(meta.topLinks)}</nav>
     `;
   }
 
-  // Sidebar: Math 8 nested links
-  const math8 = document.querySelector("#math8-nav");
-  if (math8) {
-    math8.innerHTML = buildLinks(data.math8Links, "side-link");
-  }
-
-  // Sidebar: Units list (separate)
-  const units = document.querySelector("#units-nav");
-  if (units) {
-    units.innerHTML = `
-      <div class="units-title">Units</div>
-      ${buildLinks(data.unitLinks, "unit-link")}
-    `;
-  }
-  
-  // Header title + unit subtitle
+  // Header title + unit subtitle (uses NAV_DATA)
   const { course, unit, page } = document.body.dataset;
   renderHeaderTitleAndUnit(course, unit, page);
 
-
   setActiveLinks(document);
 };
+
 function renderHeaderTitleAndUnit(courseKey, unitKey, pageKey) {
   const course = window.NAV_DATA?.[courseKey];
   if (!course) return;
 
   const titleEl = document.getElementById("page-title");
-  const unitEl = document.querySelector(".breadcrumbs"); // we’re using this as a subtitle line
+  const unitEl = document.querySelector(".breadcrumbs"); // subtitle line
 
-  // Pick the best page title
   let pageTitle = course.title;
 
   if (unitKey && course.units?.[unitKey]) {
@@ -75,13 +57,7 @@ function renderHeaderTitleAndUnit(courseKey, unitKey, pageKey) {
 
   if (titleEl) titleEl.textContent = pageTitle;
 
-  // Subtitle line: unit title only (or blank on landing)
   if (unitEl) {
-    if (unitKey && course.units?.[unitKey]) {
-      unitEl.textContent = course.units[unitKey].title;
-    } else {
-      unitEl.textContent = ""; // landing page: no subtitle
-    }
+    unitEl.textContent = (unitKey && course.units?.[unitKey]) ? course.units[unitKey].title : "";
   }
 }
-
