@@ -1,8 +1,9 @@
-<div class="breadcrumbs" id="math-breadcrumbs"></div>
+<div class="breadcrumbs" id="breadcrumbs"></div>
 <script>
 window.initBreadcrumbs = function () {
-  const el = document.getElementById("math-breadcrumbs");
+  const el = document.getElementById("breadcrumbs");
   if (!el) return;
+
   // Simple breadcrumb: just show the path for now (can upgrade later)
   el.textContent = window.location.pathname.replaceAll("/", " › ").replace(" › ", "");
 };

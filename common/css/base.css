@@ -8,6 +8,8 @@
     --card: #ffffff;
     --radius: 16px;
     --shadow: 0 8px 22px rgba(0,0,0,0.06);
+    --accent: #2f6f5f;
+    --accent-soft: rgba(47, 111, 95, 0.08); 
   }
   
   *{ box-sizing: border-box; }
@@ -18,7 +20,21 @@
     background: var(--bg);
   }
   
-  a{ color: inherit; }
+  a{ 
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none; 
+  }
+
+  a:hover {
+    color: #2f3f63;
+  }
+  h2 {
+    color: var(--accent);
+    font-weight: 600;
+    line-height: 1.1;
+    margin: 0 0 12px 0;
+  }
 
   /* Header nav links (Home | Math 8) */
   .header-nav a{
@@ -121,6 +137,19 @@
     margin: 0;
     padding: 18px 24px 8px 24px;
       }
+  
+  .page-title {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .unit-title {
+    color: var(--accent);
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 4px;
+  }
+      
 
   /* Slight spacing refinement between title and breadcrumbs */
   .page-header .breadcrumbs{

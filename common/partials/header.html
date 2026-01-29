@@ -10,6 +10,79 @@
 
   <div class="page-header">
     <h1 id="page-title" class="page-title"></h1>
-    <nav id="breadcrumbs" class="breadcrumbs" aria-label="Breadcrumbs"></nav>
+    <div id="unit-title" class="unit-title"></div>
+    
   </div>
 </header>
+
+<script>
+/**
+ * Sets:
+ * - #page-title  = current page label (lesson or unit)
+ * - #unit-title  = unit label (when inside a unit)
+ *
+ * Uses NAV_DATA (same source as your sidebar).
+ */
+if (typeof window.initNavSystems !== "function") {
+  window.initNavSystems = function () {
+    const pageTitleEl = document.getElementById("page-title");
+    const unitTitleEl = document.getElementById("unit-title");
+    if (!pageTitleEl) return;
+
+    const nav = window.NAV_DATA?.math8;
+    const units = nav?.units || {};
+
+    const rawPath = window.location.pathname.split("?")[0].split("#")[0];
+
+    // Helper: normalize to compare consistently (lightweight version)
+    const norm = (p) => {
+      if (!p) return "";
+      p = p.split("?")[0].split("#")[0];
+      // Match your sidebar behavior: treat *_index pages like folder
+      p = p.replace(/\/(u\d+_index|m\d+_index)\.html$/i, "/");
+      if (!p.endsWith("/")) p += "/";
+      return p;
+    };
+
+    const current = norm(rawPath);
+
+    // Default header values
+    let pageLabel = document.title || "Math 8";
+    let unitLabel = "";
+
+    // Home page
+    if (nav?.home?.href && (current === norm(nav.home.href) || current.startsWith(norm(nav.home.href)))) {
+      pageLabel = nav.home.label || "Math 8 Home";
+      unitLabel = "";
+    }
+
+    // Find matching unit + lesson (best match wins)
+    for (const unit of Object.values(units)) {
+      if (!unit?.href) continue;
+
+      const unitMatch = current.startsWith(norm(unit.href));
+      if (unitMatch) {
+        unitLabel = unit.label || "";
+        pageLabel = unit.label || pageLabel;
+      }
+
+      const lessons = Array.isArray(unit.lessons) ? unit.lessons : [];
+      for (const lsn of lessons) {
+        if (!lsn?.href) continue;
+        if (current === norm(lsn.href) || current.startsWith(norm(lsn.href))) {
+          pageLabel = lsn.label || pageLabel;
+          unitLabel = unit.label || unitLabel;
+          break;
+        }
+      }
+    }
+
+    // Render
+    pageTitleEl.textContent = pageLabel;
+    if (unitTitleEl) {
+      unitTitleEl.textContent = unitLabel;
+      unitTitleEl.style.display = unitLabel ? "" : "none";
+    }
+  };
+}
+</script>
