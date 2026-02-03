@@ -4,9 +4,9 @@
     if (!p) return "";
     p = p.split("?")[0].split("#")[0];
 
-    // normalize trailing slash vs file paths
-    // Treat ".../unit1/" and ".../unit1/u1_index.html" as equivalent by removing *_index.html
-    p = p.replace(/\/(u\d+_index|m\d+_index)\.html$/i, "/");
+  // Normalize any "*_index", "*_index.html", or "*_index/" to the folder
+  p = p.replace(/\/[^\/]+_index(?:\.html)?$/i, "/");
+  p = p.replace(/\/[^\/]+_index\/$/i, "/");
 
     // Always ensure trailing slash for consistent comparisons
     if (!p.endsWith("/")) p += "/";
