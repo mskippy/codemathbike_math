@@ -10,52 +10,45 @@ window.initNavSystems = function () {
   const nav = window.NAV_DATA?.[courseKey];
   const units = nav?.units || {};
 
-  const rawPath = window.location.pathname.split("?")[0].split("#")[0];
-
-  // Normalize: treat "*_index", "*_index.html", and "*_index/" as the folder
-  const norm = (p) => {
+  const normalize = (p) => {
     if (!p) return "";
     p = p.split("?")[0].split("#")[0];
+
+    // Treat .../1.3_index, .../1.3_index.html as the folder
     p = p.replace(/\/[^\/]+_index(?:\.html)?$/i, "/");
-    p = p.replace(/\/[^\/]+_index\/$/i, "/");
+
     if (!p.endsWith("/")) p += "/";
     return p;
   };
 
-  const current = norm(rawPath);
+  const current = normalize(window.location.pathname);
 
-  // Unit title (line under page title) — from body data-unit if available
+  // Unit title (subtitle under H1)
   const unitLabel = unitKey && units[unitKey]?.label ? units[unitKey].label : "";
   if (unitTitleEl) {
     unitTitleEl.textContent = unitLabel;
     unitTitleEl.style.display = unitLabel ? "" : "none";
   }
 
-  // Default page label
+  // Default
   let pageLabel = document.title || "Math 8";
 
-  // Home page
-  if (nav?.home?.href && (current === norm(nav.home.href) || current.startsWith(norm(nav.home.href)))) {
+  // Home page match (EXACT only)
+  if (nav?.home?.href && normalize(nav.home.href) === current) {
     pageLabel = nav.home.label || "Math 8 Home";
     if (unitTitleEl) unitTitleEl.style.display = "none";
   } else {
-    // Best match lesson inside any unit
+    // Lesson match (normalized)
     for (const u of Object.values(units)) {
       const lessons = Array.isArray(u.lessons) ? u.lessons : [];
-      const match = lessons.find(lsn => current === norm(lsn.href) || current.startsWith(norm(lsn.href)));
+      const match = lessons.find(lsn => normalize(lsn.href) === current);
       if (match) {
-        pageLabel = match.label || pageLabel;
-
-        // If unit title wasn't set via data-unit for some reason, set it now
-        if (unitTitleEl && (!unitLabel) && u.label) {
-          unitTitleEl.textContent = u.label;
-          unitTitleEl.style.display = "";
-        }
+        pageLabel = match.label;
         break;
       }
     }
 
-    // If not a lesson match but inside a unit, fall back to unit label
+    // fallback: if not lesson but inside a unit
     if (pageLabel === (document.title || "Math 8") && unitLabel) {
       pageLabel = unitLabel;
     }
