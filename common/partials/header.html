@@ -38,8 +38,11 @@ if (typeof window.initNavSystems !== "function") {
     const norm = (p) => {
       if (!p) return "";
       p = p.split("?")[0].split("#")[0];
-      // Match your sidebar behavior: treat *_index pages like folder
-      p = p.replace(/\/(u\d+_index|m\d+_index)\.html$/i, "/");
+    
+      // Normalize any "*_index", "*_index.html", or "*_index/" to the folder
+      p = p.replace(/\/[^\/]+_index(?:\.html)?$/i, "/");
+      p = p.replace(/\/[^\/]+_index\/$/i, "/");
+    
       if (!p.endsWith("/")) p += "/";
       return p;
     };
