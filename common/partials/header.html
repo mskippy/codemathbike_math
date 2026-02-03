@@ -1,91 +1,76 @@
-<!-- header_math.html -->
+<!-- header.html -->
 <header class="site-header">
   <div class="topbar">
     <nav class="header-nav" aria-label="Top navigation">
-      <a href="/index.html">Home</a>
+      <a href="/math/">Math</a>
       <span aria-hidden="true">|</span>
-      <a href="/math8/m8_index.html">Math 8</a>
+      <a href="/math8/m8_index.html">Math 8 Home</a>
     </nav>
   </div>
 
   <div class="page-header">
-    <h1 id="page-title" class="page-title"></h1>
-    <div id="unit-title" class="unit-title"></div>
-    
+    <h1 id="page-title" class="page-title">Math 8</h1>
+    <div id="unit-title" class="unit-title" style="display:none;"></div>
   </div>
 </header>
 
 <script>
-/**
- * Sets:
- * - #page-title  = current page label (lesson or unit)
- * - #unit-title  = unit label (when inside a unit)
- *
- * Uses NAV_DATA (same source as your sidebar).
- */
-if (typeof window.initNavSystems !== "function") {
+  // Always override to avoid conflicts with main.js
   window.initNavSystems = function () {
     const pageTitleEl = document.getElementById("page-title");
     const unitTitleEl = document.getElementById("unit-title");
     if (!pageTitleEl) return;
 
-    const nav = window.NAV_DATA?.math8;
-    const units = nav?.units || {};
+    const nav = window.NAV_DATA && window.NAV_DATA.math8;
+    if (!nav) return;
 
-    const rawPath = window.location.pathname.split("?")[0].split("#")[0];
-
-    // Helper: normalize to compare consistently (lightweight version)
-    const norm = (p) => {
+    const normalize = (p) => {
       if (!p) return "";
       p = p.split("?")[0].split("#")[0];
-    
-      // Normalize any "*_index", "*_index.html", or "*_index/" to the folder
+
+      // Normalize any "*_index", "*_index.html" to the folder
       p = p.replace(/\/[^\/]+_index(?:\.html)?$/i, "/");
-      p = p.replace(/\/[^\/]+_index\/$/i, "/");
-    
+
+      // Ensure trailing slash
       if (!p.endsWith("/")) p += "/";
       return p;
     };
 
-    const current = norm(rawPath);
+    const current = normalize(window.location.pathname);
 
-    // Default header values
+    // Default values
     let pageLabel = document.title || "Math 8";
     let unitLabel = "";
 
-    // Home page
-    if (nav?.home?.href && (current === norm(nav.home.href) || current.startsWith(norm(nav.home.href)))) {
+    // 1) Exact HOME match only (no startsWith)
+    if (nav.home && normalize(nav.home.href) === current) {
       pageLabel = nav.home.label || "Math 8 Home";
       unitLabel = "";
-    }
-
-    // Find matching unit + lesson (best match wins)
-    for (const unit of Object.values(units)) {
-      if (!unit?.href) continue;
-
-      const unitMatch = current.startsWith(norm(unit.href));
-      if (unitMatch) {
-        unitLabel = unit.label || "";
-        pageLabel = unit.label || pageLabel;
-      }
-
-      const lessons = Array.isArray(unit.lessons) ? unit.lessons : [];
-      for (const lsn of lessons) {
-        if (!lsn?.href) continue;
-        if (current === norm(lsn.href) || current.startsWith(norm(lsn.href))) {
-          pageLabel = lsn.label || pageLabel;
-          unitLabel = unit.label || unitLabel;
-          break;
+    } else {
+      // 2) Find exact lesson match by normalized path
+      const units = nav.units || {};
+      outer:
+      for (const unit of Object.values(units)) {
+        const lessons = Array.isArray(unit.lessons) ? unit.lessons : [];
+        for (const lesson of lessons) {
+          if (normalize(lesson.href) === current) {
+            pageLabel = lesson.label || pageLabel;
+            unitLabel = unit.label || "";
+            break outer;
+          }
         }
       }
     }
 
-    // Render
+    // Apply to header
     pageTitleEl.textContent = pageLabel;
-    if (unitTitleEl) {
+
+    if (unitLabel) {
       unitTitleEl.textContent = unitLabel;
-      unitTitleEl.style.display = unitLabel ? "" : "none";
+      unitTitleEl.style.display = "";
+    } else {
+      unitTitleEl.textContent = "";
+      unitTitleEl.style.display = "none";
     }
   };
-}
 </script>
