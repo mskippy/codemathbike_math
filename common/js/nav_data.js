@@ -5,7 +5,7 @@ window.NAV_DATA = {
 
     units: {
       unit1: {
-        label: "U1: Financial Foundations",
+        label: "U1: Integers Review",
         href: "/math8/unit1/u1_index.html",
         lessons: [
           { label: "1.1 Getting Ready for Math 8",        href: "/math8/unit1/lesson1/1.1_index.html" },
@@ -13,7 +13,7 @@ window.NAV_DATA = {
           { label: "1.3 Multiplying & Dividing Integers", href: "/math8/unit1/lesson3/1.3_index.html" },
           { label: "1.4 Mutli-Step Integers",             href: "/math8/unit1/lesson4/1.4_index.html" },
           { label: "1.5 Order of Operations",             href: "/math8/unit1/lesson5/1.5_index.html" },
-          { label: "1.6 In-Class Task",                   href: "/math8/unit1/lesson6/1.6_index.html" },
+          { label: "1.6 Integers Review",                 href: "/math8/unit1/lesson6/1.6_index.html" },
           { label: "1.7 Quest",                           href: "/math8/unit1/lesson7/1.7_index.html" },
         ]
       },
