@@ -25,8 +25,8 @@ window.NAV_DATA = {
           { label: "2.1 Ratios & Ratio Language", href: "/math8/unit2/lesson1/2.1_index.html" },
           { label: "2.2 Equivalent Ratios", href: "/math8/unit2/lesson2/2.2_index.html" },
           { label: "2.3 Rates & Unit Rates", href: "/math8/unit2/lesson3/2.3_index.html" },
-          { label: "2.4 Unit Pricing", href: "/math8/unit2/lesson4/2.4_index.html" },
-          { label: "2.5 Ratios, Rates, & Unit Pricing Review", href: "/math8/unit2/lesson5/2.5_index.html" },
+          { label: "2.4 Unit Pricing & Best Buys", href: "/math8/unit2/lesson4/2.4_index.html" },
+          { label: "2.5 Comparison Strategies", href: "/math8/unit2/lesson5/2.5_index.html" },
           { label: "2.6 Unit Task", href: "/math8/unit2/lesson6/2.6_index.html" }
         ]
       }
