@@ -22,13 +22,13 @@ window.NAV_DATA = {
         label: "U2: Ratios, Rates, and Unit Pricing",
         href: "/math8/unit2/u2_index.html",
         lessons: [
-          { label: "2.1 Ratios & Ratio Language", href: "/math8/unit2/lesson1/2.1_index.html" },
-          { label: "2.2 Equivalent Ratios", href: "/math8/unit2/lesson2/2.2_index.html" },
-          { label: "2.3 Ratio Word Problems", href: "/math8/unit2/lesson3/2.3_index.html" },
-          { label: "2.4 Rates & Unit Rates", href: "/math8/unit2/lesson3/2.4_index.html" },
-          { label: "2.5 Unit Pricing & Best Buys", href: "/math8/unit2/lesson4/2.5_index.html" },
-          { label: "2.6 Comparison Strategies", href: "/math8/unit2/lesson5/2.6_index.html" },
-          { label: "2.7 Unit Task", href: "/math8/unit2/lesson6/2.7_index.html" }
+          { label: "2.1 Ratios & Ratio Language",   href: "/math8/unit2/lesson1/2.1_index.html" },
+          { label: "2.2 Equivalent Ratios",         href: "/math8/unit2/lesson2/2.2_index.html" },
+          { label: "2.3 Ratio Word Problems",       href: "/math8/unit2/lesson3/2.3_index.html" },
+          { label: "2.4 Rates & Unit Rates",        href: "/math8/unit2/lesson3/2.4_index.html" },
+          { label: "2.5 Unit Pricing & Best Buys",  href: "/math8/unit2/lesson4/2.5_index.html" },
+          { label: "2.6 Comparison Strategies",     href: "/math8/unit2/lesson5/2.6_index.html" },
+          { label: "2.7 Unit Task",                 href: "/math8/unit2/lesson6/2.7_index.html" }
         ]
       }
 
