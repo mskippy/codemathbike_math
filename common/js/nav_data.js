@@ -31,9 +31,19 @@ window.NAV_DATA = {
           { label: "2.7 Unit Review",               href: "/math8/unit2/lesson7/2.7_index.html" },
           
         ]
-      }
+      },
 
-      // unit3, unit4...
-    }
-  }
-};
+      unit3: {  
+        label: "U3: Rational Numbers in Real Life",
+        href: "/math8/unit3/u3_index.html",
+        lessons: [
+          {label: "3.1 The Rational Number Family", href: "/math8/unit3/lesson1/3.1_index.html"},
+          {label: "3.2 ", href: "/math8/unit3/lesson2/3.2_index.html"},
+          {label: "3.3 ", href: "/math8/unit3/lesson3/3.3_index.html"},
+          {label: "3.4 ", href: "/math8/unit3/lesson4/3.4_index.html"},
+          
+        ]
+      },
+    },
+  },
+}
