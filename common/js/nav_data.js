@@ -39,7 +39,7 @@ window.NAV_DATA = {
         lessons: [
           {label: "3.1 The Rational Number Family", href: "/math8/unit3/lesson1/3.1_index.html"},
           {label: "3.2 Adding & Subtracting Fractions", href: "/math8/unit3/lesson2/3.2_index.html"},
-          {label: "3.3 ", href: "/math8/unit3/lesson3/3.3_index.html"},
+          {label: "3.3 Multiplying Fractions & Mixed Numbers", href: "/math8/unit3/lesson3/3.3_index.html"},
           {label: "3.4 ", href: "/math8/unit3/lesson4/3.4_index.html"},
           
         ]
