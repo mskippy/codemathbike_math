@@ -37,11 +37,12 @@ window.NAV_DATA = {
         label: "U3: Rational Numbers in Real Life",
         href: "/math8/unit3/u3_index.html",
         lessons: [
-          {label: "3.1 The Rational Number Family", href: "/math8/unit3/lesson1/3.1_index.html"},
-          {label: "3.2 Adding & Subtracting Fractions", href: "/math8/unit3/lesson2/3.2_index.html"},
-          {label: "3.3 Multiplying Fractions & Mixed Numbers", href: "/math8/unit3/lesson3/3.3_index.html"},
-          {label: "3.4 Dividing Fractions & Mixed Numbers", href: "/math8/unit3/lesson4/3.4_index.html"},
-          {label: "3.5 Order of Operations", href: "/math8/unit3/lesson5/3.5_index.html"},
+          {label: "3.1 The Rational Number Family",             href: "/math8/unit3/lesson1/3.1_index.html"},
+          {label: "3.2 Adding & Subtracting Fractions",         href: "/math8/unit3/lesson2/3.2_index.html"},
+          {label: "3.3 Multiplying Fractions & Mixed Numbers",  href: "/math8/unit3/lesson3/3.3_index.html"},
+          {label: "3.4 Dividing Fractions & Mixed Numbers",     href: "/math8/unit3/lesson4/3.4_index.html"},
+          {label: "3.5 Order of Operations",                    href: "/math8/unit3/lesson5/3.5_index.html"},
+          {label: "3.6 Fraction Operations Review",             href: "/math8/unit3/lesson6/3.6_index.html"},
           
         ]
       },
