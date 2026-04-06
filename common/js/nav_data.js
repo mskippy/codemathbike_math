@@ -46,6 +46,19 @@ window.NAV_DATA = {
           
         ]
       },
+
+      unit4: {
+        label: "U4: Percent & Proportional Relationships",
+        href: "/math8/unit4/u4_index.html",
+        lessons: [
+          {label: "4.1 Percent Review",                 href: "/math8/unit4/lesson1/4.1_index.html"},
+          {label: "4.2 Percent Relationships",          href: "/math8/unit4/lesson2/4.2_index.html"},
+          {label: "4.3 Percent Increase & Decrease",    href: "/math8/unit4/lesson3/4.3_index.html"},
+          {label: "4.4 Percent in Real Life" ,          href: "/math8/unit4/lesson4/4.4_index.html"},
+          {label: "4.5 Multi-Step Percent Problems",    href: "/math8/unit4/lesson5/4.5_index.html"},
+          {label: "4.6 Unit Review",                    href: "/math8/unit4/lesson6/4.6_index.html"},
+        ]
+      }
     },
   },
 }
