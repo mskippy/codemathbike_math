@@ -55,8 +55,8 @@ window.NAV_DATA = {
           {label: "4.2 Percent Relationships",          href: "/math8/unit4/lesson2/4.2_index.html"},
           {label: "4.3 Percent Increase & Decrease",    href: "/math8/unit4/lesson3/4.3_index.html"},
           {label: "4.4 Percent in Real Life" ,          href: "/math8/unit4/lesson4/4.4_index.html"},
-          {label: "4.5 Multi-Step Percent Problems",    href: "/math8/unit4/lesson5/4.5_index.html"},
-          {label: "4.6 Unit Review",                    href: "/math8/unit4/lesson6/4.6_index.html"},
+          {label: "4.5 Smart Shopper Challenge",        href: "/math8/unit4/lesson5/4.5_index.html"},
+          
         ]
       }
     },
