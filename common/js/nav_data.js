@@ -60,18 +60,19 @@ window.NAV_DATA = {
         ]
       },
 
-      unit5: {
-        label: "U5: Linear Relationships & Equations",
+     unit5: {
+        label: "U5: Linear Relations & Equations",
         href: "/math8/unit5/u5_index.html",
         lessons: [
-          {label: "5.1 Representing Pattern",                 href: "/math8/unit5/lesson1/5.1_index.html"},
-          {label: "5.2 Linear Equations",          href: "/math8/unit4/lesson2/5.2_index.html"},
-          {label: "5.3 Graphing Linear Equations",    href: "/math8/unit4/lesson3/5.3_index.html"},
-          {label: "5.4 " ,          href: "/math8/unit4/lesson4/5.4_index.html"},
-          {label: "5.5 ",        href: "/math8/unit4/lesson5/5.5_index.html"},
+          {label: "5.1 Repressenting Patterns",           href: "/math8/unit5/lesson1/5.1_index.html"},
+          {label: "5.2 Linear Relationships",             href: "/math8/unit5/lesson2/5.2_index.html"},
+          {label: "5.3 Graphing Linear Relations",        href: "/math8/unit5/lesson3/5.3_index.html"},
+          {label: "5.4 Linear Equations",                 href: "/math8/unit5/lesson4/5.4_index.html"},
+          {label: "5.5 Linear Equations Review",          href: "/math8/unit5/lesson5/5.5_index.html"},
+          {label: "5.6 Unit Test",                        href: "/math8/unit5/lesson6/5.6_index.html"},
           
         ]
-      }
+     }
     },
   },
 }
