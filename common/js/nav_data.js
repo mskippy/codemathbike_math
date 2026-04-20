@@ -65,8 +65,8 @@ window.NAV_DATA = {
         href: "/math8/unit5/u5_index.html",
         lessons: [
           {label: "5.1 Representing Pattern",                 href: "/math8/unit5/lesson1/5.1_index.html"},
-          {label: "5.2 ",          href: "/math8/unit4/lesson2/5.2_index.html"},
-          {label: "5.3 ",    href: "/math8/unit4/lesson3/5.3_index.html"},
+          {label: "5.2 Linear Equations",          href: "/math8/unit4/lesson2/5.2_index.html"},
+          {label: "5.3 Graphing Linear Equations",    href: "/math8/unit4/lesson3/5.3_index.html"},
           {label: "5.4 " ,          href: "/math8/unit4/lesson4/5.4_index.html"},
           {label: "5.5 ",        href: "/math8/unit4/lesson5/5.5_index.html"},
           
